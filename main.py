@@ -98,13 +98,6 @@ class Worker():
         self.patronymic = dfn.loc[index][2]
 
 
-class Workers(object):
-    """docstring for Workers."""
-
-    def __init__(self, arg):
-        super(Workers, self).__init__()
-        self.arg = arg
-
 
 def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
