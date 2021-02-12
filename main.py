@@ -25,8 +25,6 @@ class WorkerUI(QtWidgets.QMainWindow, worker.Ui_MainWindow):
 
         set_name = worker.setName(name, surname, patronymic)
 
-        set_worker = Worker(2)
-
         print(set_name)
 
 

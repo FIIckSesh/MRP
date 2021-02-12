@@ -25,7 +25,6 @@ class ClientUI(QtWidgets.QMainWindow, ui_clients.Ui_MainWindow):
 
         set_name = client.setName(name, surname, patronymic)
 
-        set_client = Client(2)
 
         print(set_name)
 

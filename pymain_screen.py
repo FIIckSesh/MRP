@@ -15,6 +15,7 @@ from PyQt5 import QtWidgets
 import main_screen
 import re
 from main import WorkerUI, Worker
+from clients import ClientUI
 from accessify import protected
 
 class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
@@ -24,9 +25,15 @@ class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
         self.addWorkerButton.clicked.connect(self.openWorker)
+        self.addClientButton.clicked.connect(self.openClient)
 
     def openWorker(self):
         self.work = WorkerUI()
+        self.work.show()
+        self.hide()
+
+    def openClient(self):
+        self.work = ClientUI()
         self.work.show()
         self.hide()
 
