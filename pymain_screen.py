@@ -23,7 +23,7 @@ class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
         # и т.д. в файле design.py
         super().__init__()
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
-        self.pushButton.clicked.connect(self.openWorker)
+        self.addWorkerButton.clicked.connect(self.openWorker)
 
     def openWorker(self):
         self.work = WorkerUI()

@@ -17,9 +17,9 @@ class Ui_MainWindow(object):
         MainWindow.resize(665, 178)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(20, 20, 191, 32))
-        self.pushButton.setObjectName("pushButton")
+        self.addWorkerButton = QtWidgets.QPushButton(self.centralwidget)
+        self.addWorkerButton.setGeometry(QtCore.QRect(20, 20, 191, 32))
+        self.addWorkerButton.setObjectName("addWorkerButton")
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(370, 60, 191, 32))
         self.pushButton_2.setObjectName("pushButton_2")
@@ -50,7 +50,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setText(_translate("MainWindow", "Добвить работника"))
+        self.addWorkerButton.setText(_translate("MainWindow", "Добавить работника"))
         self.pushButton_2.setText(_translate("MainWindow", "Зарегестриовать сделку"))
         self.pushButton_3.setText(_translate("MainWindow", "Добавить клиента"))
         self.pushButton_4.setText(_translate("MainWindow", "Оформить доставку"))

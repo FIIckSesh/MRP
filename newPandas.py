@@ -13,6 +13,8 @@ newDF = pd.DataFrame(items,columns=column_names)
 
 newDF.to_csv(r'workers.csv')
 
+newDF.to_csv(r'clients.csv')
+
 #FILENAME = "workers.csv"
 
 #with open(FILENAME, "a", newline="") as file:
