@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>665</width>
-    <height>178</height>
+    <width>752</width>
+    <height>199</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="addWorkerButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
+      <x>0</x>
+      <y>0</y>
       <width>191</width>
       <height>32</height>
      </rect>
@@ -30,9 +30,9 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>60</y>
-      <width>191</width>
+      <x>390</x>
+      <y>70</y>
+      <width>271</width>
       <height>32</height>
      </rect>
     </property>
@@ -43,8 +43,8 @@
    <widget class="QPushButton" name="addClientButton">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>20</y>
+      <x>370</x>
+      <y>0</y>
       <width>191</width>
       <height>32</height>
      </rect>
@@ -56,9 +56,9 @@
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>90</y>
-      <width>191</width>
+      <x>390</x>
+      <y>100</y>
+      <width>271</width>
       <height>32</height>
      </rect>
     </property>
@@ -69,8 +69,47 @@
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>20</y>
+      <x>180</x>
+      <y>0</y>
+      <width>201</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Добавить курьера</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_6">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>100</y>
+      <width>281</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Проверить остаток товара на складе</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_7">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>70</y>
+      <width>281</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Оформить привоз товара</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_8">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>0</y>
       <width>201</width>
       <height>32</height>
      </rect>
@@ -79,17 +118,17 @@
      <string>Добавить товар</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>70</y>
-      <width>271</width>
-      <height>32</height>
+      <x>10</x>
+      <y>30</y>
+      <width>731</width>
+      <height>16</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Проверить остаток товара на складе</string>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
     </property>
    </widget>
   </widget>
@@ -98,7 +137,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>665</width>
+     <width>752</width>
      <height>24</height>
     </rect>
    </property>
