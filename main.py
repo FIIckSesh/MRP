@@ -17,6 +17,7 @@ class WorkerUI(QtWidgets.QMainWindow, worker.Ui_MainWindow):
         self.addWorkerButton.clicked.connect(self.addWorker)
 
     def addWorker(self):
+        self.txtErr.setText("")
         worker = WorkersHandler()
 
         name = self.textName.toPlainText()
@@ -25,7 +26,9 @@ class WorkerUI(QtWidgets.QMainWindow, worker.Ui_MainWindow):
 
         set_name = worker.setName(name, surname, patronymic)
 
-        print(set_name)
+        if set_name == False:
+            self.txtErr.setText("ФИО должно состоять только из латинских символов или кириллицы")
+            self.txtErr.setStyleSheet("color: rgb(200, 0, 0)")
 
 
 class Address():
@@ -86,6 +89,7 @@ class Worker():
 
         self.getWorker(index)
 
+    @protected
     def getWorker(self, index):
         dfn = pd.read_csv('workers.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
