@@ -16,6 +16,7 @@ import main_screen
 import re
 from main import WorkerUI, Worker
 from clients import ClientUI
+from product import ProductUi
 from accessify import protected
 
 class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
@@ -26,6 +27,7 @@ class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
         self.addWorkerButton.clicked.connect(self.openWorker)
         self.addClientButton.clicked.connect(self.openClient)
+        self.addProductButton.clicked.connect(self.openProduct)
 
     def openWorker(self):
         self.work = WorkerUI()
@@ -34,6 +36,11 @@ class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
 
     def openClient(self):
         self.work = ClientUI()
+        self.work.show()
+        self.hide()
+
+    def openProduct(self):
+        self.work = ProductUi()
         self.work.show()
         self.hide()
 
