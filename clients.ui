@@ -96,7 +96,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="textStreet">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -119,7 +119,7 @@
      <string>Улица</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_2">
+   <widget class="QTextEdit" name="textHouse">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -155,7 +155,7 @@
      <string>Телефон</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_3">
+   <widget class="QTextEdit" name="textNumber">
     <property name="geometry">
      <rect>
       <x>130</x>

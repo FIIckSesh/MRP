@@ -22,42 +22,37 @@ class ClientUI(QtWidgets.QMainWindow, ui_clients.Ui_MainWindow):
         name = self.textName.toPlainText()
         surname = self.textSurname.toPlainText()
         patronymic = self.textPatr.toPlainText()
+        street = self.textStreet.toPlainText()
+        house = self.textHouse.toPlainText()
+        number = self.textNumber.toPlainText()
 
-        set_name = client.setName(name, surname, patronymic)
+        set_name = client.setName(name, surname, patronymic, street, house, number)
 
 
         print(set_name)
 
 
-class Address():
-
-    def __init__(self):
-        self.country = None
-        self.town = None
-        self.street = None
-        self.house = None
-        self.house_number = None
-
-
 class ClientsHandler():
 
     def __init__(self):
-        self.address = Address()
-        self.name = None
-        self.surename = None
-        self.patronymic = None
+        self.__name = None
+        self.__surename = None
+        self.__patronymic = None
+        self.__street = None
+        self.__house = None
+        self.__phone_number = None
 
-    def setName(self, nm, sm, pt):
+    def setName(self, nm, sm, pt, st, hs, nb):
 
         pattern = re.compile(r'^[A-Za-zа-яА-Я]+$')
-        nsp = [nm, sm, pt]
+        nsp = [nm, sm, pt, st, hs, nb]
         for str in nsp:
             if pattern.search(str) is None:
                 return False
 
-        self.name = nm
-        self.surename = sm
-        self.patronymic = pt
+        self.__name = nm
+        self.__surename = sm
+        self.__patronymic = pt
 
         self.addCsv()
 
@@ -71,7 +66,7 @@ class ClientsHandler():
         del dfn['Unnamed: 0']
 
 
-        new_row = [self.name, self.surename, self.patronymic]
+        new_row = [self.__name, self.__surename, self.__patronymic]
 
         dfn = dfn.append(pd.Series(new_row, index=dfn.columns[:len(new_row)]), ignore_index=True)
 
