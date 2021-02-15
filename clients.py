@@ -53,6 +53,9 @@ class ClientsHandler():
         self.__name = nm
         self.__surename = sm
         self.__patronymic = pt
+        self.__street = st
+        self.__house = hs
+        self.__phone_number = nb
 
         self.addCsv()
 
@@ -66,7 +69,7 @@ class ClientsHandler():
         del dfn['Unnamed: 0']
 
 
-        new_row = [self.__name, self.__surename, self.__patronymic]
+        new_row = [self.__name, self.__surename, self.__patronymic, self.__street, self.__house, self.__phone_number]
 
         dfn = dfn.append(pd.Series(new_row, index=dfn.columns[:len(new_row)]), ignore_index=True)
 
