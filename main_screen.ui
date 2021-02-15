@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Зарегестриовать сделку</string>
+     <string>Зарегистрировать сделку</string>
     </property>
    </widget>
    <widget class="QPushButton" name="addClientButton">
@@ -102,10 +102,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Оформить привоз товара</string>
+     <string>Оформить загрузку/отгрузку товара</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="addProductButton">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -138,7 +138,7 @@
      <x>0</x>
      <y>0</y>
      <width>752</width>
-     <height>24</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
