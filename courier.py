@@ -2,11 +2,12 @@ import numpy as np
 import pandas as pd
 import sys
 from PyQt5 import QtWidgets
-import worker
+import courier_ui
 import re
+from main import WorkersHandler, Worker
 from accessify import protected
 
-class WorkerUI(QtWidgets.QMainWindow, worker.Ui_MainWindow):
+class CourierUI(QtWidgets.QMainWindow, courier_ui.Ui_MainWindow):
 
     def __init__(self):
         # Это здесь нужно для доступа к переменным, методам
@@ -14,31 +15,23 @@ class WorkerUI(QtWidgets.QMainWindow, worker.Ui_MainWindow):
 
         super().__init__()
         self.setupUi(self)
-        self.addWorkerButton.clicked.connect(self.addWorker)
+        self.addCourierButton.clicked.connect(self.addCourier)
 
-    def addWorker(self):
+    def addCourier(self):
         self.txtErr.setText("")
-        worker = WorkersHandler()
+        courier = CouriersHandler()
 
         name = self.textName.toPlainText()
         surname = self.textSurname.toPlainText()
         patronymic = self.textPatr.toPlainText()
 
-        set_name = worker.setName(name, surname, patronymic)
+        set_name = courier.setName(name, surname, patronymic)
 
         if set_name == False:
             self.txtErr.setText("ФИО должно состоять только из латинских символов или кириллицы")
             self.txtErr.setStyleSheet("color: rgb(200, 0, 0)")
 
-
-
-
-class WorkersHandler():
-
-    def __init__(self):
-        self.name = None
-        self.surename = None
-        self.patronymic = None
+class CouriersHandler(WorkersHandler):
 
     def setName(self, nm, sm, pt):
 
@@ -59,7 +52,7 @@ class WorkersHandler():
 
     @protected
     def addCsv(self):
-        dfn = pd.read_csv('workers.csv', encoding='utf-8')
+        dfn = pd.read_csv('couriers.csv', encoding='utf-8')
 
         del dfn['Unnamed: 0']
 
@@ -68,20 +61,19 @@ class WorkersHandler():
 
         dfn = dfn.append(pd.Series(new_row, index=dfn.columns[:len(new_row)]), ignore_index=True)
 
-        dfn.to_csv(r'workers.csv')
+        dfn.to_csv(r'couriers.csv')
 
-class Worker():
+class Courier(Worker):
 
     def __init__(self, index):
         self.name = None
         self.surename = None
         self.patronymic = None
-
-        self.getWorker(index)
+        self.getCourier(index)
 
     @protected
-    def getWorker(self, index):
-        dfn = pd.read_csv('workers.csv', encoding='utf-8')
+    def getCourier(self, index):
+        dfn = pd.read_csv('couriers.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
         dfn.loc[index]
 
@@ -93,7 +85,7 @@ class Worker():
 
 def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
-    window = WorkerUI()  # Создаём объект класса ExampleApp
+    window = CourierUI()  # Создаём объект класса ExampleApp
     window.show()  # Показываем окно
     app.exec_()  # и запускаем приложение
 

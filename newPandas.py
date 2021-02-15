@@ -11,6 +11,7 @@ column_worker = ['Name', 'Surename', 'Patronomyc']
 items_worker = [['Sesh','Real','Kent']]
 newDF = pd.DataFrame(items_worker,columns=column_worker)
 newDF.to_csv(r'workers.csv')
+newDF.to_csv(r'couriers.csv')
 
 column_clients = ['Name', 'Surename', 'Patronomyc', 'Street', 'House', 'Number']
 items_clients = [['Sesh','Real','Kent','Puskina','Kolotuskina','+75673565676']]
