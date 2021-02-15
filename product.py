@@ -20,7 +20,7 @@ class ProductUi(QtWidgets.QMainWindow, product_ui.Ui_MainWindow):
 
         # Создаем объект и добавляем в csv файл
         newProduct = Product(name, price, producer, measurment)
-        newProduct.__addCsv__()
+        newProduct.addCsv()
 
 
 class Product():
@@ -40,7 +40,7 @@ class Product():
         self.producer = dfn.loc[index][2]
         self.measurment = dfn.loc[index][3]
 
-    def __addCsv__(self):
+    def addCsv(self):
         dfn = pd.read_csv('products.csv', encoding='utf-8')
 
         del dfn['Unnamed: 0']
