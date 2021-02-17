@@ -30,6 +30,8 @@ class CourierUI(QtWidgets.QMainWindow, courier_ui.Ui_MainWindow):
         if set_name == False:
             self.txtErr.setText("ФИО должно состоять только из латинских символов или кириллицы")
             self.txtErr.setStyleSheet("color: rgb(200, 0, 0)")
+        else:
+            self.hide()
 
 class CouriersHandler(WorkersHandler):
 
