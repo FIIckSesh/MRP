@@ -6,36 +6,23 @@ import balance_ui
 import re
 from accessify import protected
 
-class BalanceUi(QtWidgets.QMainWindow, Balance_ui.Ui_MainWindow):
+class BalanceUI(QtWidgets.QMainWindow, balance_ui.Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-
-    def addBalance(self):
-        #name = self.nameLine.text()
-
-
-        # Создаем объект и добавляем в csv файл
-        #newBalance = Balance(name, price, producer, measurment)
-        #newBalance.addCsv()
-        dfn = pd.read_csv('balance.csv', encoding='utf-8')
-        del dfn['Unnamed: 0']
-        new_row = [self.name, self.price, self.producer, self.measurment]
-        dfn = dfn.append(pd.Series(new_row, index=dfn.columns[:len(new_row)]), ignore_index=True)
-        dfn.to_csv(r'balance.csv')
+        balance = Balance()
 
 
 class Balance():
-    def __init__(self, product, amount):
-        self.product = product
-        self.amount = amount
-
-    def getBalance^
-
+    def __init__(self):
+        dfn = pd.read_csv('balance.csv', encoding='utf-8')
+        del dfn['Unnamed: 0']
+        dfn.to_dict('list')
+        self.products = dfn
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    window = BalanceUi()
+    window = BalanceUI()
     window.show()
     app.exec_()
 

@@ -7,7 +7,7 @@ import re
 from accessify import protected
 
 # логика интерфейса
-class ProductUi(QtWidgets.QMainWindow, product_ui.Ui_MainWindow):
+class ProductUI(QtWidgets.QMainWindow, product_ui.Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -53,14 +53,14 @@ class Product():
     def initAmount(self):
         dfn = pd.read_csv('balance.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
-        new_row = [self.name, 0]
+        new_row = [self.name, self.producer, 0, self.measurment]
         index = dfn.columns[:len(new_row)]
         dfn = dfn.append(pd.Series(new_row, index=index), ignore_index=True)
         dfn.to_csv(r'balance.csv')
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    window = ProductUi()
+    window = ProductUI()
     window.show()
     app.exec_()
 
