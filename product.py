@@ -15,6 +15,8 @@ class ProductUi(QtWidgets.QMainWindow, product_ui.Ui_MainWindow):
 
     # кнопка "Добавить"
     def addProduct(self):
+        if self.nameLine.text() == '':
+            return
         name = self.nameLine.text()
         price = self.priceLine.text()
         producer = self.producerLine.text()
@@ -31,8 +33,13 @@ class ProductUi(QtWidgets.QMainWindow, product_ui.Ui_MainWindow):
 
         del dfn['Unnamed: 0']
         new_row = [name, price, producer, measurment]
-        dfn = dfn.append(pd.Series(new_row, index=dfn.columns[:len(new_row)]), ignore_index=True)
+        index = dfn.columns[:len(new_row)]
+        dfn = dfn.append(pd.Series(new_row, index=index), ignore_index=True)
         dfn.to_csv(r'products.csv')
+
+        # Инициализируем кол-во товара
+        newProduct.initAmount();
+
         self.close()
 
 
@@ -42,6 +49,14 @@ class Product():
         self.price = price
         self.producer = producer
         self.measurment = measurment
+
+    def initAmount(self):
+        dfn = pd.read_csv('balance.csv', encoding='utf-8')
+        del dfn['Unnamed: 0']
+        new_row = [self.name, 0]
+        index = dfn.columns[:len(new_row)]
+        dfn = dfn.append(pd.Series(new_row, index=index), ignore_index=True)
+        dfn.to_csv(r'balance.csv')
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
