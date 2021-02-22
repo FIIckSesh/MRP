@@ -58,6 +58,31 @@ class Product():
         dfn = dfn.append(pd.Series(new_row, index=index), ignore_index=True)
         dfn.to_csv(r'balance.csv')
 
+    def removeProduct(index):
+        print(index)
+
+        # Удаляем из товаров
+        dfn = pd.read_csv('products.csv', encoding='utf-8')
+
+        # Проверка индекса
+        try:
+             dfn.iloc[index, 0]
+        except LookupError:
+            print("out of frame")
+            return
+
+        del dfn['Unnamed: 0']
+        dfn = dfn.drop(index=index)
+        dfn = dfn.reset_index(drop=True)
+        dfn.to_csv(r'products.csv')
+
+        # Удаляем со склада
+        dfn = pd.read_csv('balance.csv', encoding='utf-8')
+        del dfn['Unnamed: 0']
+        dfn = dfn.drop(index=index)
+        dfn = dfn.reset_index(drop=True)
+        dfn.to_csv(r'balance.csv')
+
 def main():
     app = QtWidgets.QApplication(sys.argv)
     window = ProductUI()

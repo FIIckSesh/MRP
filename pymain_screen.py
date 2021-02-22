@@ -19,6 +19,7 @@ from clients import ClientUI
 from product import ProductUI
 from courier import CourierUI
 from balance import BalanceUI
+from product import Product
 from accessify import protected
 
 class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
@@ -34,6 +35,7 @@ class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
         self.addTransactionButton.clicked.connect(self.openTransaction)
         self.addShippingButton.clicked.connect(self.openShipping)
         self.checkBalance.clicked.connect(self.showBalance)
+        self.removeProductBtn.clicked.connect(self.remProduct)
 
     def openWorker(self):
         self.work = WorkerUI()
@@ -65,6 +67,9 @@ class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
         self.work = BalanceUI()
         self.work.show()
         self.hide()
+
+    def remProduct(self):
+        Product.removeProduct(self.prodIndex.value())
 
 def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
