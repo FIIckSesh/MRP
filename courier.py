@@ -83,6 +83,23 @@ class Courier(Worker):
         self.surename = dfn.loc[index][1]
         self.patronymic = dfn.loc[index][2]
 
+    def removeCourier(index):
+
+        # Удаляем из курьеров
+        dfn = pd.read_csv('couriers.csv', encoding='utf-8')
+
+        # Проверка индекса
+        try:
+             dfn.iloc[index, 0]
+        except LookupError:
+            print("out of frame")
+            return
+
+        del dfn['Unnamed: 0']
+        dfn = dfn.drop(index=index)
+        dfn = dfn.reset_index(drop=True)
+        dfn.to_csv(r'couriers.csv')
+
 
 
 def main():

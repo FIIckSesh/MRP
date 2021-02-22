@@ -17,7 +17,7 @@ import re
 from main import WorkerUI, Worker
 from clients import ClientUI, Client
 from product import ProductUI, Product
-from courier import CourierUI
+from courier import CourierUI, Courier
 from balance import BalanceUI
 from accessify import protected
 
@@ -37,6 +37,7 @@ class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
         self.removeProductBtn.clicked.connect(self.remProduct)
         self.removeWorkerBtn.clicked.connect(self.remWorker)
         self.removeClientBtn.clicked.connect(self.remClient)
+        self.removeCourierBtn.clicked.connect(self.remCourier)
 
     def openWorker(self):
         self.work = WorkerUI()
@@ -77,6 +78,9 @@ class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
 
     def remClient(self):
         Client.removeClient(self.clientIndex.value())
+
+    def remCourier(self):
+        Courier.removeCourier(self.courierIndex.value())
 
 def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
