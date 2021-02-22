@@ -25,7 +25,8 @@ class WorkerUI(QtWidgets.QMainWindow, worker.Ui_MainWindow):
         patronymic = self.textPatr.toPlainText()
 
         set_name = worker.setName(name, surname, patronymic)
-
+        Worker(0).changeData("Kersh", "Kersh", "Kersh")
+        print(Worker(0).name)
         if set_name == False:
             self.txtErr.setText("ФИО должно состоять только из латинских символов или кириллицы")
             self.txtErr.setStyleSheet("color: rgb(200, 0, 0)")
@@ -76,18 +77,29 @@ class Worker():
         self.name = None
         self.surename = None
         self.patronymic = None
+        self.index = index
 
-        self.getWorker(index)
+        self.getWorker()
 
     @protected
-    def getWorker(self, index):
+    def getWorker(self):
         dfn = pd.read_csv('workers.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
-        dfn.loc[index]
+        dfn.loc[self.index]
 
-        self.name = dfn.loc[index][0]
-        self.surename = dfn.loc[index][1]
-        self.patronymic = dfn.loc[index][2]
+        self.name = dfn.loc[self.index][0]
+        self.surename = dfn.loc[self.index][1]
+        self.patronymic = dfn.loc[self.index][2]
+
+    def changeData(self, name, surename, patronymic):
+        dfn = pd.read_csv('workers.csv', encoding='utf-8')
+        del dfn['Unnamed: 0']
+
+        dfn.loc[self.index][0] = name
+        dfn.loc[self.index][1] = surename
+        dfn.loc[self.index][2] = patronymic
+
+        dfn.to_csv(r'workers.csv')
 
 
 
