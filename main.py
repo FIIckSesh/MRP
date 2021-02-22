@@ -5,7 +5,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 import main_screen_ui  # Это наш конвертированный файл дизайна
 import changed_worker_ui
-from worker import WorkerUI
+from worker import WorkerUI, Worker
 from product import ProductUI
 from courier import CourierUI
 from balance import BalanceUI
@@ -27,11 +27,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.directoryButton.clicked.connect(self.setMod)
         self.movementButton.clicked.connect(self.setMod)
         self.comboBox.currentIndexChanged.connect(self.ChangeTable)
-        self.tableWidget.itemSelectionChanged.connect(self.test)
 
-    def test(self):
-        print(self.tableWidget.itemSelectionChanged)
-        print(self.tableWidget.row(self.tableWidget.currentItem()))
 
     def setMod(self):
         if self.directorySet == False:
@@ -84,7 +80,6 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         dfn = pd.read_csv('data/workers.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
         k = 0
-        print(len(dfn))
         while True:
             try:
                 dfn.loc[k][0]
@@ -287,14 +282,22 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
     def openWorker(self):
         self.work = WorkerUI()
         self.work.show()
+        self.work.windowTitleChanged.connect(self.fillTableWorkers)
 
     def changedWorker(self):
-        self.work = ChangedWorkerUI(5)
+        index = self.tableWidget.row(self.tableWidget.currentItem())
+        name = self.tableWidget.item(index, 0)
+        surename = self.tableWidget.item(index, 1)
+        patr = self.tableWidget.item(index, 2)
+        self.work = ChangedWorkerUI(index, name.text(), surename.text(), patr.text())
         self.work.show()
+        self.work.windowTitleChanged.connect(self.fillTableWorkers)
+
 
     def openClient(self):
         self.work = ClientUI()
         self.work.show()
+        self.work.windowTitleChanged.connect(self.fillTableWorkers)
 
     def changedClient(self):
         ##self.work = ClientUI()
@@ -348,12 +351,26 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
 
 class ChangedWorkerUI(QtWidgets.QMainWindow, changed_worker_ui.Ui_MainWindow):
 
-    def __init__(self, index):
+    def __init__(self, index, name, surename, patronymic):
         # Это здесь нужно для доступа к переменным, методам
         # и т.д. в файле design.py
         super().__init__()
         self.setupUi(self)
-        print(index)
+        self.textName.setText(name)
+        self.textSurname.setText(surename)
+        self.textPatr.setText(patronymic)
+        self.index = index
+
+        self.addWorkerButton.clicked.connect(self.changeWorker)
+
+    def changeWorker(self):
+        self.n = self.textName.toPlainText()
+        self.s = self.textSurname.toPlainText()
+        self.p = self.textPatr.toPlainText()
+        print(self.index, self.n, self.s, self.p)
+        Worker(self.index).changeData(self.n, self.s, self.p)
+        self.setWindowTitle("done")
+        self.hide()
 
 def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication

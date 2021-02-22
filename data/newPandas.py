@@ -21,7 +21,6 @@ column_products = ['Name', 'Price', 'Producer', 'Measurment']
 items_products = [['Pivo','228','PivoPetrsu','10000']]
 newDF = pd.DataFrame(items_products,columns=column_products)
 newDF.to_csv(r'products.csv')
-
 column_worker = ['Name', 'Surename', 'Patronomyc', 'Сarriage size']
 items_worker = [['Sesh','Real','Kent', '50']]
 newDF = pd.DataFrame(items_worker,columns=column_worker)
