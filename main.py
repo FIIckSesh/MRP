@@ -257,7 +257,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
             if text == self.items[0]:
                 self.showBalance()
             if text == self.items[1]:
-                self.openShipment()
+                self.openShipping()
             if text == self.items[2]:
                 self.openTransaction()
 
@@ -276,7 +276,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
             if text == self.items[0]:
                 self.changedBalance()
             if text == self.items[1]:
-                self.changedShipment()
+                self.changedShipping()
             if text == self.items[2]:
                 self.changedTransaction()
 
