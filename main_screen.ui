@@ -154,6 +154,29 @@
      </rect>
     </property>
    </widget>
+   <widget class="QSpinBox" name="workerIndex">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>170</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="removeWorkerBtn">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>140</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Удалить работника с индексом:</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

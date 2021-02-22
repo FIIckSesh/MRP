@@ -101,7 +101,21 @@ class Worker():
 
         dfn.to_csv(r'workers.csv')
 
+    def removeWorker(index):
+        # Удаляем из работников
+        dfn = pd.read_csv('workers.csv', encoding='utf-8')
 
+        # Проверка индекса
+        try:
+             dfn.iloc[index, 0]
+        except LookupError:
+            print("out of frame")
+            return
+
+        del dfn['Unnamed: 0']
+        dfn = dfn.drop(index=index)
+        dfn = dfn.reset_index(drop=True)
+        dfn.to_csv(r'workers.csv')
 
 def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
