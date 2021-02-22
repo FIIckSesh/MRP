@@ -94,6 +94,23 @@ class Client():
         self.surename = dfn.loc[index][1]
         self.patronymic = dfn.loc[index][2]
 
+    def removeClient(index):
+        print(index)
+
+        # Удаляем из товаров
+        dfn = pd.read_csv('clients.csv', encoding='utf-8')
+
+        # Проверка индекса
+        try:
+             dfn.iloc[index, 0]
+        except LookupError:
+            print("out of frame")
+            return
+
+        del dfn['Unnamed: 0']
+        dfn = dfn.drop(index=index)
+        dfn = dfn.reset_index(drop=True)
+        dfn.to_csv(r'clients.csv')
 
 
 def main():

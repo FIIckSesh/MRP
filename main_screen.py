@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(751, 259)
+        MainWindow.resize(751, 312)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.addWorkerButton = QtWidgets.QPushButton(self.centralwidget)
@@ -58,6 +58,12 @@ class Ui_MainWindow(object):
         self.removeWorkerBtn = QtWidgets.QPushButton(self.centralwidget)
         self.removeWorkerBtn.setGeometry(QtCore.QRect(390, 140, 271, 31))
         self.removeWorkerBtn.setObjectName("removeWorkerBtn")
+        self.clientIndex = QtWidgets.QSpinBox(self.centralwidget)
+        self.clientIndex.setGeometry(QtCore.QRect(510, 230, 51, 21))
+        self.clientIndex.setObjectName("clientIndex")
+        self.removeClientBtn = QtWidgets.QPushButton(self.centralwidget)
+        self.removeClientBtn.setGeometry(QtCore.QRect(390, 200, 271, 31))
+        self.removeClientBtn.setObjectName("removeClientBtn")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 751, 26))
@@ -83,3 +89,4 @@ class Ui_MainWindow(object):
         self.addProductButton.setText(_translate("MainWindow", "Добавить товар"))
         self.removeProductBtn.setText(_translate("MainWindow", "Удалить товар с индексом:"))
         self.removeWorkerBtn.setText(_translate("MainWindow", "Удалить работника с индексом:"))
+        self.removeClientBtn.setText(_translate("MainWindow", "Удалить клиента с индексом:"))

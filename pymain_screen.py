@@ -15,7 +15,7 @@ from PyQt5 import QtWidgets
 import main_screen
 import re
 from main import WorkerUI, Worker
-from clients import ClientUI
+from clients import ClientUI, Client
 from product import ProductUI, Product
 from courier import CourierUI
 from balance import BalanceUI
@@ -36,6 +36,7 @@ class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
         self.checkBalance.clicked.connect(self.showBalance)
         self.removeProductBtn.clicked.connect(self.remProduct)
         self.removeWorkerBtn.clicked.connect(self.remWorker)
+        self.removeClientBtn.clicked.connect(self.remClient)
 
     def openWorker(self):
         self.work = WorkerUI()
@@ -73,6 +74,9 @@ class Main_Screen(QtWidgets.QMainWindow, main_screen.Ui_MainWindow):
 
     def remWorker(self):
         Worker.removeWorker(self.workerIndex.value())
+
+    def remClient(self):
+        Client.removeClient(self.clientIndex.value())
 
 def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication

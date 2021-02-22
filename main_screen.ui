@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>751</width>
-    <height>259</height>
+    <height>312</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -175,6 +175,29 @@
     </property>
     <property name="text">
      <string>Удалить работника с индексом:</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="clientIndex">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>230</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="removeClientBtn">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>200</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Удалить клиента с индексом:</string>
     </property>
    </widget>
   </widget>
