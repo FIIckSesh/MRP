@@ -6,6 +6,10 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 import main_screen_ui  # Это наш конвертированный файл дизайна
 import changed_worker_ui
 from worker import WorkerUI
+from product import ProductUI
+from courier import CourierUI
+from balance import BalanceUI
+from clients import ClientUI
 
 class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
     def __init__(self):
@@ -289,10 +293,8 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.work.show()
 
     def openClient(self):
-        ##self.work = ClientUI()
-        #self.work.show()
-        #self.hide()
-        pass
+        self.work = ClientUI()
+        self.work.show()
 
     def changedClient(self):
         ##self.work = ClientUI()
@@ -301,10 +303,8 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         pass
 
     def openProduct(self):
-        #self.work = ProductUI()
-        #self.work.show()
-        #self.hide()
-        pass
+        self.work = ProductUI()
+        self.work.show()
 
     def changedProduct(self):
         #self.work = ProductUI()
@@ -313,10 +313,8 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         pass
 
     def openCourier(self):
-        #self.work = CourierUI()
-        #self.work.show()
-        #self.hide()
-        pass
+        self.work = CourierUI()
+        self.work.show()
 
     def changedCourier(self):
         #self.work = CourierUI()

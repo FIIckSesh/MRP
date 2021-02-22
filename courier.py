@@ -4,7 +4,7 @@ import sys
 from PyQt5 import QtWidgets
 import courier_ui
 import re
-from main import WorkersHandler, Worker
+from worker import WorkersHandler, Worker
 from accessify import protected
 
 class CourierUI(QtWidgets.QMainWindow, courier_ui.Ui_MainWindow):
