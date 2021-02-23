@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>331</width>
-    <height>283</height>
+    <width>338</width>
+    <height>269</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Добавить новый товар</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background: #CF9292;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -37,7 +40,11 @@
      </widget>
     </item>
     <item row="2" column="2">
-     <widget class="QLineEdit" name="priceLine"/>
+     <widget class="QLineEdit" name="priceLine">
+      <property name="styleSheet">
+       <string notr="true">background: #C4C4C4;</string>
+      </property>
+     </widget>
     </item>
     <item row="3" column="0">
      <widget class="QLabel" name="label_3">
@@ -47,20 +54,35 @@
      </widget>
     </item>
     <item row="4" column="2">
-     <widget class="QLineEdit" name="measurmentLine"/>
+     <widget class="QLineEdit" name="measurmentLine">
+      <property name="styleSheet">
+       <string notr="true">background: #C4C4C4;</string>
+      </property>
+     </widget>
     </item>
     <item row="0" column="2">
-     <widget class="QLineEdit" name="nameLine"/>
+     <widget class="QLineEdit" name="nameLine">
+      <property name="styleSheet">
+       <string notr="true">background: #C4C4C4;</string>
+      </property>
+     </widget>
     </item>
     <item row="5" column="1" colspan="2">
      <widget class="QPushButton" name="prodAddBtn">
+      <property name="styleSheet">
+       <string notr="true">background: #C4C4C4;</string>
+      </property>
       <property name="text">
        <string>Добавить</string>
       </property>
      </widget>
     </item>
     <item row="3" column="2">
-     <widget class="QLineEdit" name="producerLine"/>
+     <widget class="QLineEdit" name="producerLine">
+      <property name="styleSheet">
+       <string notr="true">background: #C4C4C4;</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
