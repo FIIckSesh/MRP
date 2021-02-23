@@ -20,6 +20,13 @@ class Balance():
         dfn.to_dict('list')
         self.products = dfn
 
+    def changeBalance(self, value, sign, index):
+        if sign = '+':
+            self.products.iloc[index, 3] += value
+
+        if sign = '-':
+            self.products.iloc[index, 3] -= value
+
 def main():
     app = QtWidgets.QApplication(sys.argv)
     window = BalanceUI()
