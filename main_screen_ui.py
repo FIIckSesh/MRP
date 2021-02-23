@@ -41,16 +41,16 @@ class Ui_MainWindow(object):
 "\n"
 "background: #C4C4C4;")
         self.changedButton.setObjectName("changedButton")
-        self.pushButton_4 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_4.setGeometry(QtCore.QRect(650, 130, 321, 46))
-        self.pushButton_4.setStyleSheet("position: absolute;\n"
+        self.delButton = QtWidgets.QPushButton(self.widget)
+        self.delButton.setGeometry(QtCore.QRect(650, 130, 321, 46))
+        self.delButton.setStyleSheet("position: absolute;\n"
 "width: 299px;\n"
 "height: 45px;\n"
 "left: 695px;\n"
 "top: 165px;\n"
 "\n"
 "background: #C4C4C4;")
-        self.pushButton_4.setObjectName("pushButton_4")
+        self.delButton.setObjectName("delButton")
         self.addButton = QtWidgets.QPushButton(self.widget)
         self.addButton.setGeometry(QtCore.QRect(650, 10, 321, 46))
         self.addButton.setStyleSheet("position: absolute;\n"
@@ -71,6 +71,7 @@ class Ui_MainWindow(object):
 "top: 93px;\n"
 "\n"
 "background: #C4C4C4;")
+        self.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(0)
@@ -115,7 +116,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.changedButton.setText(_translate("MainWindow", "Редактировать"))
-        self.pushButton_4.setText(_translate("MainWindow", "Удалить"))
+        self.delButton.setText(_translate("MainWindow", "Удалить"))
         self.addButton.setText(_translate("MainWindow", "Добавить"))
         self.directoryButton.setText(_translate("MainWindow", "Справочники"))
         self.movementButton.setText(_translate("MainWindow", "Движения"))

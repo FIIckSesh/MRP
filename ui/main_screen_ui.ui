@@ -66,7 +66,7 @@ background: #C4C4C4;</string>
       <string>Редактировать</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QPushButton" name="delButton">
      <property name="geometry">
       <rect>
        <x>650</x>
@@ -130,6 +130,9 @@ left: 45px;
 top: 93px;
 
 background: #C4C4C4;</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>

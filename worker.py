@@ -104,9 +104,9 @@ class Worker():
 
         dfn.to_csv(r'data/workers.csv')
 
-    def removeWorker():
+    def removeWorker(self):
         # Удаляем из работников
-        dfn = pd.read_csv('workers.csv', encoding='utf-8')
+        dfn = pd.read_csv('data/workers.csv', encoding='utf-8')
 
         # Проверка индекса
         try:
@@ -118,7 +118,7 @@ class Worker():
         del dfn['Unnamed: 0']
         dfn = dfn.drop(index=self.index)
         dfn = dfn.reset_index(drop=True)
-        dfn.to_csv(r'workers.csv')
+        dfn.to_csv(r'data/workers.csv')
 
 
 

@@ -18,8 +18,10 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.fillTableWorkers()
+        self.tableWidget.verticalScrollBar()
         self.addButton.clicked.connect(self.open)
         self.changedButton.clicked.connect(self.change)
+        self.delButton.clicked.connect(self.delete)
         self.items = ["Сотрудники", "Курьеры", "Товары", "Клиенты"]
         self.comboBox.addItems(self.items)
         self.directoryButton.setEnabled(False)
@@ -279,6 +281,31 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
             if text == self.items[2]:
                 self.changedTransaction()
 
+    def delete(self):
+        text = self.comboBox.currentText()
+        if self.directorySet == True:
+            if text == self.items[0]:
+                self.delWorker()
+            if text == self.items[1]:
+                #self.delCourier()
+                pass
+            if text == self.items[2]:
+                #self.delProduct()
+                pass
+            if text == self.items[3]:
+                #self.delClient()
+                pass
+        else:
+            if text == self.items[0]:
+                #self.delBalance()
+                pass
+            if text == self.items[1]:
+                #self.delShipping()
+                pass
+            if text == self.items[2]:
+                #self.delTransaction()
+                pass
+
     def openWorker(self):
         self.work = WorkerUI()
         self.work.show()
@@ -293,6 +320,11 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.work.show()
         self.work.windowTitleChanged.connect(self.fillTableWorkers)
 
+    def delWorker(self):
+        print("тут")
+        index = self.tableWidget.row(self.tableWidget.currentItem())
+        Worker(index).removeWorker()
+        self.fillTableWorkers()
 
     def openClient(self):
         self.work = ClientUI()
