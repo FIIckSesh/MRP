@@ -21,10 +21,10 @@ class Balance():
         self.products = dfn
 
     def changeBalance(self, value, sign, index):
-        if sign = '+':
+        if sign == '+':
             self.products.iloc[index, 3] += value
 
-        if sign = '-':
+        if sign == '-':
             self.products.iloc[index, 3] -= value
 
 def main():
