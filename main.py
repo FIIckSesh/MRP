@@ -1,13 +1,13 @@
 import sys  # sys нужен для передачи argv в QApplication
 import numpy as np
 import pandas as pd
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 import main_screen_ui  # Это наш конвертированный файл дизайна
 import changed_worker_ui
 from worker import WorkerUI, Worker
 from product import ProductUI
-from courier import CourierUI
+from courier import CourierUI, Courier
 from balance import BalanceUI
 from clients import ClientUI
 
@@ -24,23 +24,24 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.delButton.clicked.connect(self.delete)
         self.items = ["Сотрудники", "Курьеры", "Товары", "Клиенты"]
         self.comboBox.addItems(self.items)
-        self.directoryButton.setEnabled(False)
+        self.directoryButton.setEnabled(False)  
         self.directorySet = True
         self.directoryButton.clicked.connect(self.setMod)
         self.movementButton.clicked.connect(self.setMod)
         self.comboBox.currentIndexChanged.connect(self.ChangeTable)
 
-
     def setMod(self):
+        print(123)
         if self.directorySet == False:
+            print(123)
             self.directoryButton.setEnabled(False)
             self.movementButton.setEnabled(True)
             self.directorySet = True
             self.items = ["Сотрудники", "Курьеры", "Товары", "Клиенты"]
             self.comboBox.clear()
             self.comboBox.addItems(self.items)
-            self.fillTableWorkers()
         else:
+            print(1232)
             self.directoryButton.setEnabled(True)
             self.movementButton.setEnabled(False)
             self.directorySet = False
@@ -50,27 +51,37 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
 
 
     def ChangeTable(self):
+        if self.comboBox.currentIndex == -1:
+            return
         text = self.comboBox.currentText()
-        if self.directorySet == True:
+        if self.directorySet:
             if text == self.items[0]:
                 self.fillTableWorkers()
-            if text == self.items[1]:
+                return
+            elif text == self.items[1]:
                 self.fillTableCouriers()
-            if text == self.items[2]:
+                return
+            elif text == self.items[2]:
                 self.fillTableProducts()
-            if text == self.items[3]:
+                return
+            elif text == self.items[3]:
                 self.fillTableClients()
+                return
         else:
             if text == self.items[0]:
                 self.fillTableBalance()
-            if text == self.items[1]:
+                return
+            elif text == self.items[1]:
                 self.fillTableShipment()
-            if text == self.items[2]:
+                return
+            elif text == self.items[2]:
                 self.fillTableTransaction()
+                return
 
 
 
     def fillTableWorkers(self):
+        print(1)
         self.tableWidget.clear()
         self.tableWidget.setColumnCount(3)
         header = self.tableWidget.horizontalHeader()
@@ -94,6 +105,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(dfn.loc[i][j]))
 
     def fillTableCouriers(self):
+        print(2)
         self.tableWidget.clear()
         self.tableWidget.setColumnCount(4)
         header = self.tableWidget.horizontalHeader()
@@ -118,6 +130,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(dfn.loc[i][j])))
 
     def fillTableProducts(self):
+        print(3)
         self.tableWidget.clear()
         self.tableWidget.setColumnCount(4)
         header = self.tableWidget.horizontalHeader()
@@ -142,6 +155,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(dfn.loc[i][j])))
 
     def fillTableClients(self):
+        print(4)
         self.tableWidget.clear()
         self.tableWidget.setColumnCount(6)
         header = self.tableWidget.horizontalHeader()
@@ -168,6 +182,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(dfn.loc[i][j])))
 
     def fillTableBalance(self):
+        print(5)
         self.tableWidget.clear()
         self.tableWidget.setColumnCount(4)
         header = self.tableWidget.horizontalHeader()
@@ -192,6 +207,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(dfn.loc[i][j])))
 
     def fillTableShipment(self):
+        print(6)
         self.tableWidget.clear()
         self.tableWidget.setColumnCount(6)
         header = self.tableWidget.horizontalHeader()
@@ -218,6 +234,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(dfn.loc[i][j])))
 
     def fillTableTransaction(self):
+        print(7)
         self.tableWidget.clear()
         self.tableWidget.setColumnCount(6)
         header = self.tableWidget.horizontalHeader()
@@ -350,11 +367,19 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
     def openCourier(self):
         self.work = CourierUI()
         self.work.show()
+        self.work.addCourierButton.clicked.connect(self.fillTableCouriers)
 
     def changedCourier(self):
-        #self.work = CourierUI()
-        #self.work.show()
-        #self.hide()
+        self.work = CourierUI()
+        index = self.tableWidget.row(self.tableWidget.currentItem())
+        name = self.tableWidget.item(index, 0).text()
+        surename = self.tableWidget.item(index, 1).text()
+        patr = self.tableWidget.item(index, 2).text()
+        carriageSize = self.tableWidget.item(index, 3).text()
+        self.work.changeWindow(name, surename, patr, carriageSize)
+        self.work.show()
+        self.work.addCourierButton.clicked.connect(self.fillTableCouriers)
+        self.work.addCourierButton.clicked.connect(Courier(index).changeCourier(name,surename,patr,carriageSize))
         pass
 
     def openTransaction(self):
@@ -408,7 +433,7 @@ def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
     window = MainScreen()  # Создаём объект класса ExampleApp
     window.show()  # Показываем окно
-    app.exec_()  # и запускаем приложение
+    app.exec()  # и запускаем приложение
 
 if __name__ == '__main__':  # Если мы запускаем файл напрямую, а не импортируем
     main()  # то запускаем функцию main()

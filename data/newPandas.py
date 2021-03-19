@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import sys
 from PyQt5 import QtWidgets
-import worker
 import re
 from accessify import protected
 import csv

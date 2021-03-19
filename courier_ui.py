@@ -17,31 +17,58 @@ class Ui_MainWindow(object):
         MainWindow.resize(627, 369)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+
+
         self.textSurname = QtWidgets.QTextEdit(self.centralwidget)
         self.textSurname.setGeometry(QtCore.QRect(140, 140, 104, 51))
         self.textSurname.setObjectName("textSurname")
-        self.textPatr = QtWidgets.QTextEdit(self.centralwidget)
-        self.textPatr.setGeometry(QtCore.QRect(370, 140, 104, 51))
-        self.textPatr.setObjectName("textPatr")
-        self.addCourierButton = QtWidgets.QPushButton(self.centralwidget)
-        self.addCourierButton.setGeometry(QtCore.QRect(200, 200, 251, 32))
-        self.addCourierButton.setObjectName("addCourierButton")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(160, 110, 60, 16))
-        self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(290, 110, 60, 16))
-        self.label_2.setObjectName("label_2")
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(410, 110, 60, 16))
-        self.label_3.setObjectName("label_3")
+
+        
         self.textName = QtWidgets.QTextEdit(self.centralwidget)
         self.textName.setGeometry(QtCore.QRect(250, 140, 104, 51))
         self.textName.setObjectName("textName")
+
+
+        self.textPatr = QtWidgets.QTextEdit(self.centralwidget)
+        self.textPatr.setGeometry(QtCore.QRect(360, 140, 104, 51))
+        self.textPatr.setObjectName("textPatr")
+
+        self.carriageSize = QtWidgets.QTextEdit(self.centralwidget)
+        self.carriageSize.setGeometry(QtCore.QRect(470, 140, 104, 51))
+        self.carriageSize.setObjectName("carriageSize")
+
+
+        self.addCourierButton = QtWidgets.QPushButton(self.centralwidget)
+        self.addCourierButton.setGeometry(QtCore.QRect(200, 200, 251, 32))
+        self.addCourierButton.setObjectName("addCourierButton")
+
+
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(140, 110, 104, 16))
+        self.label.setObjectName("label")
+
+
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(250, 110, 104, 16))
+        self.label_2.setObjectName("label_2")
+
+
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(360, 110, 104, 16))
+        self.label_3.setObjectName("label_3")
+
+
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(470,110,105,16))
+        self.label_3.setObjectName("label_4")
+
+
         self.txtErr = QtWidgets.QLabel(self.centralwidget)
         self.txtErr.setGeometry(QtCore.QRect(90, 240, 471, 31))
         self.txtErr.setText("")
         self.txtErr.setObjectName("txtErr")
+
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 627, 24))
@@ -60,4 +87,5 @@ class Ui_MainWindow(object):
         self.addCourierButton.setText(_translate("MainWindow", "Добавить курьера"))
         self.label.setText(_translate("MainWindow", "Фамилия"))
         self.label_2.setText(_translate("MainWindow", "Имя"))
-        self.label_3.setText(_translate("MainWindow", "Отчество "))
+        self.label_3.setText(_translate("MainWindow", "Отчество"))
+        self.label_4.setText(_translate("MainWindow", "Ёмкость машины"))
