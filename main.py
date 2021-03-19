@@ -5,11 +5,12 @@ from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 import main_screen_ui  # Это наш конвертированный файл дизайна
 import changed_worker_ui
+import ui_clients
 from worker import WorkerUI, Worker
 from product import ProductUI
 from courier import CourierUI, Courier
 from balance import BalanceUI
-from clients import ClientUI
+from clients import ClientUI, Client
 
 class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
     def __init__(self):
@@ -24,7 +25,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.delButton.clicked.connect(self.delete)
         self.items = ["Сотрудники", "Курьеры", "Товары", "Клиенты"]
         self.comboBox.addItems(self.items)
-        self.directoryButton.setEnabled(False)  
+        self.directoryButton.setEnabled(False)
         self.directorySet = True
         self.directoryButton.clicked.connect(self.setMod)
         self.movementButton.clicked.connect(self.setMod)
@@ -349,6 +350,18 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.work.windowTitleChanged.connect(self.fillTableWorkers)
 
     def changedClient(self):
+        index = self.tableWidget.row(self.tableWidget.currentItem())
+        name = self.tableWidget.item(index, 0)
+        surename = self.tableWidget.item(index, 1)
+        patr = self.tableWidget.item(index, 2)
+        street = self.tableWidget.item(index, 3)
+        house = self.tableWidget.item(index, 4)
+        phone = self.tableWidget.item(index, 5)
+
+        self.client = ChangedClientUI(index, name.text(), surename.text(), patr.text(), street.text(), house.text(), phone.text())
+        self.client.show()
+        self.client.windowTitleChanged.connect(self.fillTableClients)
+
         ##self.work = ClientUI()
         #self.work.show()
         #self.hide()
@@ -428,6 +441,36 @@ class ChangedWorkerUI(QtWidgets.QMainWindow, changed_worker_ui.Ui_MainWindow):
         Worker(self.index).changeData(self.n, self.s, self.p)
         self.setWindowTitle("done")
         self.hide()
+
+class ChangedClientUI(QtWidgets.QMainWindow, ui_clients.Ui_MainWindow):
+
+    def __init__(self, index, name, surename, patr, street, house, phone):
+        # Это здесь нужно для доступа к переменным, методам
+        # и т.д. в файле design.py
+        super().__init__()
+        self.setupUi(self)
+        self.addClientButton.setText("Редактировать клиента")
+        self.textName.setText(name)
+        self.textSurname.setText(surename)
+        self.textPatr.setText(patr)
+        self.textStreet.setText(street)
+        self.textHouse.setText(house)
+        self.textNumber.setText(phone)
+        self.index = index
+
+        self.addClientButton.clicked.connect(self.changeClient)
+
+    def changeClient(self):
+        self.name = self.textName.toPlainText()
+        self.surname = self.textSurname.toPlainText()
+        self.patronymic = self.textPatr.toPlainText()
+        self.street = self.textStreet.toPlainText()
+        self.house = self.textHouse.toPlainText()
+        self.phone = self.textNumber.toPlainText()
+        Client(self.index).changeData(self.name, self.surname, self.patronymic, self.street, self.house, self.phone)
+        self.setWindowTitle("done")
+        self.hide()
+
 
 def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication

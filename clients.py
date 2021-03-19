@@ -78,27 +78,33 @@ class ClientsHandler():
 class Client():
 
     def __init__(self, index):
-        self.address = Address()
         self.name = None
         self.surename = None
         self.patronymic = None
+        self.street = None
+        self.house = None
+        self.phone_number = None
+        self.index = index
 
         self.getClient(index)
 
     def getClient(self, index):
-        dfn = pd.read_csv('workers.csv', encoding='utf-8')
+        dfn = pd.read_csv('data/clients.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
-        dfn.loc[index]
+        dfn.loc[self.index]
 
-        self.name = dfn.loc[index][0]
-        self.surename = dfn.loc[index][1]
-        self.patronymic = dfn.loc[index][2]
+        self.name = dfn.loc[self.index][0]
+        self.surename = dfn.loc[self.index][1]
+        self.patronymic = dfn.loc[self.index][2]
+        self.street = dfn.loc[self.index][3]
+        self.house = dfn.loc[self.index][4]
+        self.phone_number = dfn.loc[self.index][5]
 
     def removeClient(index):
         print(index)
 
         # Удаляем из товаров
-        dfn = pd.read_csv('clients.csv', encoding='utf-8')
+        dfn = pd.read_csv('data/clients.csv', encoding='utf-8')
 
         # Проверка индекса
         try:
@@ -110,7 +116,24 @@ class Client():
         del dfn['Unnamed: 0']
         dfn = dfn.drop(index=index)
         dfn = dfn.reset_index(drop=True)
-        dfn.to_csv(r'clients.csv')
+        dfn.to_csv(r'data/clients.csv')
+
+    def changeData(self, name, surename, patr, street, house, phone):
+        dfn = pd.read_csv('data/clients.csv', encoding='utf-8')
+        del dfn['Unnamed: 0']
+
+        #print(self.index, name, surename, patr, street, house, phone)
+        print(name)
+        print(dfn.loc[self.index][0])
+        dfn.iloc[self.index, 0] = name
+        print(dfn.iloc[self.index][0])
+        dfn.iloc[self.index, 1] = surename
+        dfn.iloc[self.index, 2] = patr
+        dfn.iloc[self.index, 3] = street
+        dfn.iloc[self.index, 4] = house
+        dfn.iloc[self.index, 5] = phone
+
+        dfn.to_csv(r'data/clients.csv')
 
 
 def main():
