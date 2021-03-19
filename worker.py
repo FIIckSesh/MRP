@@ -98,9 +98,9 @@ class Worker():
         dfn = pd.read_csv('data/workers.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
 
-        dfn.loc[self.index][0] = name
-        dfn.loc[self.index][1] = surename
-        dfn.loc[self.index][2] = patronymic
+        dfn.iloc[self.index,0] = name
+        dfn.iloc[self.index,1] = surename
+        dfn.iloc[self.index,2] = patronymic
 
         dfn.to_csv(r'data/workers.csv')
 

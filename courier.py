@@ -15,7 +15,6 @@ class CourierUI(QtWidgets.QMainWindow, courier_ui.Ui_MainWindow):
 
         super().__init__()
         self.setupUi(self)
-        self.addCourierButton.clicked.connect(self.addCourier)
 
     def changeWindow(self, name, surname, patronymic, carriageSize):
         self.textName.setText(name)
@@ -69,12 +68,8 @@ class CouriersHandler(WorkersHandler):
     @protected
     def addCsv(self):
         dfn = pd.read_csv('data/couriers.csv', encoding='utf-8')
-
         del dfn['Unnamed: 0']
-
-
         new_row = [self.name, self.surename, self.patronymic, self.carriageSize]
-
         dfn = dfn.append(pd.Series(new_row, index=dfn.columns[:len(new_row)]), ignore_index=True)
 
         dfn.to_csv(r'data/couriers.csv')
@@ -85,46 +80,43 @@ class Courier(Worker):
         self.name = None
         self.surename = None
         self.patronymic = None
+        self.carriageSize = None
         self.index = index
-        self.getCourier(index)
+        self.getCourier()
 
     @protected
-    def getCourier(self, index):
+    def getCourier(self):
         dfn = pd.read_csv('data/couriers.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
-        self.name = dfn.loc[index][0]
-        self.surename = dfn.loc[index][1]
-        self.patronymic = dfn.loc[index][2]
-        self.carriageSize = dfn.loc[index][3]
+        dfn.loc[self.index]
+        self.name = dfn.loc[self.index][0]
+        self.surename = dfn.loc[self.index][1]
+        self.patronymic = dfn.loc[self.index][2]
+        self.carriageSize = dfn.loc[self.index][3]
 
     def changeCourier(self, name, surename, patronymic, carriageSize):
         dfn = pd.read_csv('data/couriers.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
-        print(dfn.loc[self.index])
-        dfn.__getitem__(self.index).__setitem__(0, name)
-        dfn.__getitem__(self.index).__setitem__(1, surename)
-        dfn.__getitem__(self.index).__setitem__(2, patronymic)
-        dfn.__getitem__(self.index).__setitem__(3, carriageSize)
-        #dfn.loc[self.index][0] = name
-        #dfn.loc[self.index][1] = surename
-        #dfn.loc[self.index][2] = patronymic
-        #dfn.loc[self.index][3] = carriageSize
+        dfn.iloc[self.index,0] = name
+        dfn.iloc[self.index,1] = surename
+        dfn.iloc[self.index,2] = patronymic
+        dfn.iloc[self.index,3] = carriageSize
 
         dfn.to_csv(r'data/couriers.csv')
 
-    def removeCourier(self, index):
+    def removeCourier(self):
         # Удаляем из курьеров
         dfn = pd.read_csv('data/couriers.csv', encoding='utf-8')
 
         # Проверка индекса
         try:
-             dfn.iloc[index, 0]
+             dfn.iloc[self.index, 0]
         except LookupError:
             print("out of frame")
             return
 
         del dfn['Unnamed: 0']
-        dfn = dfn.drop(index=index)
+        dfn = dfn.drop(index=self.index)
         dfn = dfn.reset_index(drop=True)
         dfn.to_csv(r'data/couriers.csv')
 

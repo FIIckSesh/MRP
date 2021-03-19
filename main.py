@@ -304,7 +304,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
             if text == self.items[0]:
                 self.delWorker()
             if text == self.items[1]:
-                #self.delCourier()
+                self.delCourier()
                 pass
             if text == self.items[2]:
                 #self.delProduct()
@@ -367,20 +367,36 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
     def openCourier(self):
         self.work = CourierUI()
         self.work.show()
+        self.work.addCourierButton.clicked.connect(self.work.addCourier)
         self.work.addCourierButton.clicked.connect(self.fillTableCouriers)
 
     def changedCourier(self):
         self.work = CourierUI()
-        index = self.tableWidget.row(self.tableWidget.currentItem())
-        name = self.tableWidget.item(index, 0).text()
-        surename = self.tableWidget.item(index, 1).text()
-        patr = self.tableWidget.item(index, 2).text()
-        carriageSize = self.tableWidget.item(index, 3).text()
-        self.work.changeWindow(name, surename, patr, carriageSize)
+        self.i = self.tableWidget.row(self.tableWidget.currentItem())
+        self.n = self.tableWidget.item(self.i, 0).text()
+        self.s = self.tableWidget.item(self.i, 1).text()
+        self.p = self.tableWidget.item(self.i, 2).text()
+        self.c = self.tableWidget.item(self.i, 3).text()
+        self.work.changeWindow(self.n , self.s, self.p, self.c)
         self.work.show()
+        self.work.addCourierButton.clicked.connect(self.sossiHuy)
         self.work.addCourierButton.clicked.connect(self.fillTableCouriers)
-        self.work.addCourierButton.clicked.connect(Courier(index).changeCourier(name,surename,patr,carriageSize))
+        self.work.addCourierButton.clicked.connect(self.work.hide)
         pass
+
+    def sossiHuy(self):
+        n = self.work.textName.toPlainText()
+        s = self.work.textSurname.toPlainText()
+        p = self.work.textPatr.toPlainText()
+        c = self.work.carriageSize.toPlainText()
+        Courier(self.i).changeCourier(n, s, p, c)
+        #Courier(mass[0]).changeCourier(mass[1],mass[2],mass[3],mass[4])
+
+    def delCourier(self):
+        index = self.tableWidget.row(self.tableWidget.currentItem())
+        #Courier(index).removeCourier()
+        Courier(index).removeCourier()
+        self.fillTableCouriers()
 
     def openTransaction(self):
         pass
