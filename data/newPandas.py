@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import sys
 from PyQt5 import QtWidgets
+
 import re
 from accessify import protected
 import csv
@@ -20,12 +21,12 @@ column_products = ['Name', 'Price', 'Producer', 'Measurment']
 items_products = [['Pivo','228','PivoPetrsu','10000']]
 newDF = pd.DataFrame(items_products,columns=column_products)
 newDF.to_csv(r'products.csv')
-column_worker = ['Name', 'Surename', 'Patronomyc', 'Сarriage size']
+column_worker = ['Name', 'Surename', 'Patronomyc', 'Carriage size']
 items_worker = [['Sesh','Real','Kent', '50']]
 newDF = pd.DataFrame(items_worker,columns=column_worker)
 newDF.to_csv(r'couriers.csv')
 
-shipment = ['Сourier', 'The date', 'Product', 'Count', 'Client', 'Address']
+shipment = ['Courier', 'The date', 'Product', 'Count', 'Client', 'Address']
 items_worker = [['Никита Алексеенко Алексеевич','27.10.2000','Соль', '100000', 'Никита Алексеенко Алексеевич', 'Puskina Kolotuskina']]
 newDF = pd.DataFrame(items_worker,columns=shipment)
 newDF.to_csv(r'shipment.csv')
