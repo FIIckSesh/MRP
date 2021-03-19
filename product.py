@@ -29,7 +29,7 @@ class ProductUI(QtWidgets.QMainWindow, product_ui.Ui_MainWindow):
         # Проверка на уникальность товара
         for index, row in dfn.iterrows():
             if row['Name'] == name:
-                return;
+                return
 
         del dfn['Unnamed: 0']
         new_row = [name, price, producer, measurment]
