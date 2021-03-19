@@ -7,9 +7,9 @@ import main_screen_ui  # Это наш конвертированный файл
 import changed_worker_ui
 import ui_clients
 from worker import WorkerUI, Worker
-from product import ProductUI
+from product import ProductUI, Product
 from courier import CourierUI, Courier
-from balance import BalanceUI
+from balance import BalanceUI, Balance
 from clients import ClientUI, Client
 
 class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
@@ -308,7 +308,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
                 self.delCourier()
                 pass
             if text == self.items[2]:
-                #self.delProduct()
+                self.delProduct()
                 pass
             if text == self.items[3]:
                 #self.delClient()
@@ -370,12 +370,47 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
     def openProduct(self):
         self.work = ProductUI()
         self.work.show()
+        self.work.prodAddBtn.clicked.connect(self.work.addProduct)
+        self.work.prodAddBtn.clicked.connect(self.fillTableProducts)
 
     def changedProduct(self):
-        #self.work = ProductUI()
-        #self.work.show()
+        self.index = self.tableWidget.row(self.tableWidget.currentItem())
+        print(self.index )
+        if self.index  == -1:
+            return
+
+        self.work = ProductUI()
+        self.work.show()
+
+        name = self.tableWidget.item(self.index ,0).text()
+        price = self.tableWidget.item(self.index ,1).text()
+        producer = self.tableWidget.item(self.index ,2).text()
+        measurment = self.tableWidget.item(self.index ,3).text()
+        self.work.changeWindow(name, price, producer, measurment)
+        self.work.prodAddBtn.clicked.connect(self.prodAddBtnClicked)
+        self.work.prodAddBtn.clicked.connect(self.fillTableProducts)
+        self.work.prodAddBtn.clicked.connect(self.work.hide)
         #self.hide()
         pass
+
+    def prodAddBtnClicked(self):
+        name = self.work.nameLine.text()
+        price = self.work.priceLine.text()
+        producer = self.work.producerLine.text()
+        measurment = self.work.measurmentLine.text()
+        Product(name, price, producer, measurment).changeData(self.index)
+
+    def delProduct(self):
+        index = self.tableWidget.row(self.tableWidget.currentItem())
+        if index == -1:
+            return
+        
+        name = self.tableWidget.item(index,0).text()
+        price = self.tableWidget.item(index,1).text()
+        producer = self.tableWidget.item(index,2).text()
+        measurment = self.tableWidget.item(index,3).text()
+        Product(name, price, producer, measurment).removeProduct(index)
+        self.fillTableProducts()
 
     def openCourier(self):
         self.work = CourierUI()
