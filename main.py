@@ -25,7 +25,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.delButton.clicked.connect(self.delete)
         self.items = ["Сотрудники", "Курьеры", "Товары", "Клиенты"]
         self.comboBox.addItems(self.items)
-        self.directoryButton.setEnabled(False)
+        self.directoryButton.setEnabled(False)  
         self.directorySet = True
         self.directoryButton.clicked.connect(self.setMod)
         self.movementButton.clicked.connect(self.setMod)
