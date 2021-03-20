@@ -27,6 +27,8 @@ class ClientUI(QtWidgets.QMainWindow, ui_clients.Ui_MainWindow):
         number = self.textNumber.toPlainText()
 
         set_name = client.setName(name, surname, patronymic, street, house, number)
+        self.setWindowTitle("done")
+        self.hide()
 
 
         print(set_name)
@@ -64,7 +66,7 @@ class ClientsHandler():
 
     @protected
     def addCsv(self):
-        dfn = pd.read_csv('clients.csv', encoding='utf-8')
+        dfn = pd.read_csv('data/clients.csv', encoding='utf-8')
 
         del dfn['Unnamed: 0']
 
@@ -73,7 +75,7 @@ class ClientsHandler():
 
         dfn = dfn.append(pd.Series(new_row, index=dfn.columns[:len(new_row)]), ignore_index=True)
 
-        dfn.to_csv(r'clients.csv')
+        dfn.to_csv(r'data/clients.csv')
 
 class Client():
 
@@ -100,21 +102,21 @@ class Client():
         self.house = dfn.loc[self.index][4]
         self.phone_number = dfn.loc[self.index][5]
 
-    def removeClient(index):
-        print(index)
+    def removeClient(self):
+        print(self.index)
 
         # Удаляем из товаров
         dfn = pd.read_csv('data/clients.csv', encoding='utf-8')
 
         # Проверка индекса
         try:
-             dfn.iloc[index, 0]
+             dfn.iloc[self.index, 0]
         except LookupError:
             print("out of frame")
             return
 
         del dfn['Unnamed: 0']
-        dfn = dfn.drop(index=index)
+        dfn = dfn.drop(index=self.index)
         dfn = dfn.reset_index(drop=True)
         dfn.to_csv(r'data/clients.csv')
 

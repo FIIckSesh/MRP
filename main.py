@@ -25,7 +25,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.delButton.clicked.connect(self.delete)
         self.items = ["Сотрудники", "Курьеры", "Товары", "Клиенты"]
         self.comboBox.addItems(self.items)
-        self.directoryButton.setEnabled(False)  
+        self.directoryButton.setEnabled(False)
         self.directorySet = True
         self.directoryButton.clicked.connect(self.setMod)
         self.movementButton.clicked.connect(self.setMod)
@@ -311,7 +311,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
                 #self.delProduct()
                 pass
             if text == self.items[3]:
-                #self.delClient()
+                self.delClient()
                 pass
         else:
             if text == self.items[0]:
@@ -347,7 +347,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
     def openClient(self):
         self.work = ClientUI()
         self.work.show()
-        self.work.windowTitleChanged.connect(self.fillTableWorkers)
+        self.work.windowTitleChanged.connect(self.fillTableClients)
 
     def changedClient(self):
         index = self.tableWidget.row(self.tableWidget.currentItem())
@@ -361,6 +361,11 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.client = ChangedClientUI(index, name.text(), surename.text(), patr.text(), street.text(), house.text(), phone.text())
         self.client.show()
         self.client.windowTitleChanged.connect(self.fillTableClients)
+
+    def delClient(self):
+        index = self.tableWidget.row(self.tableWidget.currentItem())
+        Client(index).removeClient()
+        self.fillTableClients()
 
         ##self.work = ClientUI()
         #self.work.show()
