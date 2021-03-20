@@ -46,10 +46,11 @@ class WorkersHandler():
 
     def setName(self, nm, sm, pt):
 
-        pattern = re.compile(r'^[A-Za-zа-яА-Я]+$')
+        patternEng = re.compile(r'^[A-Za-z]+$')
+        patternRus = re.compile(r'^[а-яА-Я]+$')
         nsp = [nm, sm, pt]
         for str in nsp:
-            if pattern.search(str) is None:
+            if patternEng.search(str) is None and patternRus.search(str) is None:
                 return False
 
         self.name = nm

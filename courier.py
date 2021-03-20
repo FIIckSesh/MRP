@@ -45,11 +45,13 @@ class CouriersHandler(WorkersHandler):
 
     def setName(self, nm, sm, pt, cs):
 
-        pattern = re.compile(r'^[A-Za-zа-яА-Я]+$')
+
+        patternEng = re.compile(r'^[A-Za-z]+$')
+        patternRus = re.compile(r'^[а-яА-Я]+$')
         pattern2 = re.compile(r'^[1-9]+$')
         nsp = [nm, sm, pt]
         for str in nsp:
-            if pattern.search(str) is None:
+            if patternRus.search(str) is None or patternEng.search(str) is None:
                 return False
 
         if pattern2.search(cs) is None:

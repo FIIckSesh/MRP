@@ -311,7 +311,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
                 self.delProduct()
                 pass
             if text == self.items[3]:
-                #self.delClient()
+                self.delClient()
                 pass
         else:
             if text == self.items[0]:
@@ -331,6 +331,8 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
 
     def changedWorker(self):
         index = self.tableWidget.row(self.tableWidget.currentItem())
+        if index == -1:
+            return
         name = self.tableWidget.item(index, 0)
         surename = self.tableWidget.item(index, 1)
         patr = self.tableWidget.item(index, 2)
@@ -339,8 +341,9 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.work.windowTitleChanged.connect(self.fillTableWorkers)
 
     def delWorker(self):
-        print("тут")
         index = self.tableWidget.row(self.tableWidget.currentItem())
+        if index == -1:
+            return
         Worker(index).removeWorker()
         self.fillTableWorkers()
 
@@ -349,8 +352,17 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.work.show()
         self.work.windowTitleChanged.connect(self.fillTableWorkers)
 
+    def delClient(self):
+        index = self.tableWidget.row(self.tableWidget.currentItem())
+        if index == -1:
+            return
+        Client().removeClient(index)
+        self.fillTableClients()
+
     def changedClient(self):
         index = self.tableWidget.row(self.tableWidget.currentItem())
+        if index == -1:
+            return
         name = self.tableWidget.item(index, 0)
         surename = self.tableWidget.item(index, 1)
         patr = self.tableWidget.item(index, 2)
@@ -421,6 +433,8 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
     def changedCourier(self):
         self.work = CourierUI()
         self.i = self.tableWidget.row(self.tableWidget.currentItem())
+        if self.i == -1:
+            return
         self.n = self.tableWidget.item(self.i, 0).text()
         self.s = self.tableWidget.item(self.i, 1).text()
         self.p = self.tableWidget.item(self.i, 2).text()
@@ -442,6 +456,8 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
 
     def delCourier(self):
         index = self.tableWidget.row(self.tableWidget.currentItem())
+        if index == -1:
+            return
         #Courier(index).removeCourier()
         Courier(index).removeCourier()
         self.fillTableCouriers()

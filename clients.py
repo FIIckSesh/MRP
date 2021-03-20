@@ -44,10 +44,11 @@ class ClientsHandler():
 
     def setName(self, nm, sm, pt, st, hs, nb):
 
-        pattern = re.compile(r'^[A-Za-zа-яА-Я]+$')
+        patternEng = re.compile(r'^[A-Za-z]+$')
+        patternRus = re.compile(r'^[а-яА-Я]+$')
         nsp = [nm, sm, pt, st, hs, nb]
         for str in nsp:
-            if pattern.search(str) is None:
+            if patternEng.search(str) is None or patternRus.search(str) is None:
                 return False
 
         self.__name = nm
@@ -100,7 +101,7 @@ class Client():
         self.house = dfn.loc[self.index][4]
         self.phone_number = dfn.loc[self.index][5]
 
-    def removeClient(index):
+    def removeClient(self, index):
         print(index)
 
         # Удаляем из товаров
