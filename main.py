@@ -315,7 +315,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
                 pass
         else:
             if text == self.items[0]:
-                #self.delBalance()
+                self.delBalance()
                 pass
             if text == self.items[1]:
                 #self.delShipping()
@@ -441,12 +441,12 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.c = self.tableWidget.item(self.i, 3).text()
         self.work.changeWindow(self.n , self.s, self.p, self.c)
         self.work.show()
-        self.work.addCourierButton.clicked.connect(self.sossiHuy)
+        self.work.addCourierButton.clicked.connect(self.addCourierButtonClicked)
         self.work.addCourierButton.clicked.connect(self.fillTableCouriers)
         self.work.addCourierButton.clicked.connect(self.work.hide)
         pass
 
-    def sossiHuy(self):
+    def addCourierButtonClicked(self):
         n = self.work.textName.toPlainText()
         s = self.work.textSurname.toPlainText()
         p = self.work.textPatr.toPlainText()
@@ -475,15 +475,49 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         pass
 
     def showBalance(self):
-        #self.work = BalanceUI()
-        #self.work.show()
+        self.work = BalanceUI()
+        self.work.show()
+        self.work.acceptButton.clicked.connect(self.work.addBalanceToData)
+        self.work.acceptButton.clicked.connect(self.fillTableBalance)
         #self.hide()
         pass
 
     def changedBalance(self):
-        #self.work = BalanceUI()
-        #self.work.show()
-        #self.hide()
+        self.index = self.tableWidget.currentRow()
+        if self.index == -1:
+            return
+        print(123)
+
+        name = self.tableWidget.item(self.index, 0).text()
+        producer = self.tableWidget.item(self.index, 1).text()
+        amount = self.tableWidget.item(self.index, 2).text()
+        measurment = self.tableWidget.item(self.index, 3).text()
+
+        self.work = BalanceUI()
+        self.work.name.setText(name)
+        self.work.name.setReadOnly(True)
+        self.work.producer.setText(producer)
+        self.work.producer.setReadOnly(True)
+        self.work.amount.setText(amount)
+        self.work.measurment.setText(measurment)
+        self.work.measurment.setReadOnly(True)
+        self.work.show()
+        self.work.acceptButton.clicked.connect(self.changeClick)
+        self.work.acceptButton.clicked.connect(self.fillTableBalance)
+        pass
+
+    def changeClick(self):
+        amount = self.work.amount.text()
+        Balance(self.index).changeBalance(amount)
+        self.work.close()
+
+
+    def delBalance(self):
+        index = self.tableWidget.currentRow()
+        if index == -1:
+            return
+        Balance(index).removeBalance()
+        self.fillTableBalance()
         pass
 
 class ChangedWorkerUI(QtWidgets.QMainWindow, changed_worker_ui.Ui_MainWindow):
