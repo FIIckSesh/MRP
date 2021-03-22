@@ -25,7 +25,8 @@ class ShipmentUI(QtWidgets.QMainWindow, shipment_ui.Ui_MainWindow):
         while (True):
             try:
                 courier = Courier(k)
-                self.items.append(courier.name + " " + courier.surename)
+                print(type(courier.name))
+                self.items.append(str(courier.name) + " " + str(courier.surename))
                 k = k + 1
             except KeyError:
                 break
@@ -42,8 +43,8 @@ class ShipmentUI(QtWidgets.QMainWindow, shipment_ui.Ui_MainWindow):
         while (True):
             try:
                 client = Client(k)
-                self.items.append(client.name + " " + client.phone_number)
-                self.itemsAddress.append(client.street + " " + client.house)
+                self.items.append(str(client.name) + " " + str(client.phone_number))
+                self.itemsAddress.append(str(client.street) + " " + str(client.house))
                 k = k + 1
             except KeyError:
                 break
