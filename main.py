@@ -452,7 +452,6 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         p = self.work.textPatr.toPlainText()
         c = self.work.carriageSize.toPlainText()
         Courier(self.i).changeCourier(n, s, p, c)
-        #Courier(mass[0]).changeCourier(mass[1],mass[2],mass[3],mass[4])
 
     def delCourier(self):
         index = self.tableWidget.row(self.tableWidget.currentItem())
