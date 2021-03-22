@@ -25,6 +25,8 @@ class WorkerUI(QtWidgets.QMainWindow, worker_ui.Ui_MainWindow):
         patronymic = self.textPatr.toPlainText()
 
         set_name = worker.setName(name, surname, patronymic)
+        Worker(0).changeData("Kersh", "Kersh", "Kersh")
+        print(Worker(0).name)
         if set_name == False:
             self.txtErr.setText("ФИО должно состоять только из латинских символов или кириллицы")
             self.txtErr.setStyleSheet("color: rgb(200, 0, 0)")
