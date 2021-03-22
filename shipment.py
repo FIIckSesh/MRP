@@ -6,6 +6,7 @@ import shipment_ui
 import re
 from accessify import protected
 from courier import Courier
+from clients import Client
 
 class ShipmentUI(QtWidgets.QMainWindow, shipment_ui.Ui_MainWindow):
 
@@ -35,8 +36,22 @@ class ShipmentUI(QtWidgets.QMainWindow, shipment_ui.Ui_MainWindow):
         for i in range(len(dfn)):
             self.items.append(dfn.iloc[i,0])
 
-        self.comboBox.addItems(self.items)
+        self.Product.addItems(self.items)
 
+        k = 0
+        self.items = []
+        self.itemsAddress = []
+        while (True):
+            try:
+                client = Client(k)
+                self.items.append(client.name + " " + client.phone_number)
+                self.itemsAddress.append(client.street + " " + client.house)
+                k = k + 1
+            except KeyError:
+                break
+
+        self.Client.addItems(self.items)
+        self.Address.addItems(self.itemsAddress)
 
 
 
