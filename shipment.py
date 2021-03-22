@@ -16,7 +16,10 @@ class ShipmentUI(QtWidgets.QMainWindow, shipment_ui.Ui_MainWindow):
 
         super().__init__()
         self.setupUi(self)
+        self.fillFields()
+        self.pushButton.clicked.connect(self.addShipment)
 
+    def fillFields(self):
         k = 0
         self.items = []
         while (True):
@@ -26,18 +29,13 @@ class ShipmentUI(QtWidgets.QMainWindow, shipment_ui.Ui_MainWindow):
                 k = k + 1
             except KeyError:
                 break
-
         self.Courier.addItems(self.items)
-
         dfn = pd.read_csv('data/products.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
-
         self.items = []
         for i in range(len(dfn)):
             self.items.append(dfn.iloc[i,0])
-
         self.Product.addItems(self.items)
-
         k = 0
         self.items = []
         self.itemsAddress = []
@@ -49,11 +47,12 @@ class ShipmentUI(QtWidgets.QMainWindow, shipment_ui.Ui_MainWindow):
                 k = k + 1
             except KeyError:
                 break
-
         self.Client.addItems(self.items)
         self.Address.addItems(self.itemsAddress)
 
-
+    def addShipment(self):
+        print("тут")
+        pass
 
 def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
