@@ -22,7 +22,6 @@ class ProductUI(QtWidgets.QMainWindow, product_ui.Ui_MainWindow):
         measurment = self.measurmentLine.text()
 
         # Создаем объект и добавляем в csv файл
-        newProduct = Product(name, price, producer, measurment)
         dfn = pd.read_csv('data/products.csv', encoding='utf-8')
 
         # Проверка на уникальность товара
@@ -36,8 +35,6 @@ class ProductUI(QtWidgets.QMainWindow, product_ui.Ui_MainWindow):
         dfn = dfn.append(pd.Series(new_row, index=index), ignore_index=True)
         dfn.to_csv(r'data/products.csv')
 
-        # Инициализируем кол-во товара
-        newProduct.initAmount()
 
         self.close()
 
@@ -56,14 +53,6 @@ class Product():
         self.price = price
         self.producer = producer
         self.measurment = measurment
-
-    def initAmount(self):
-        dfn = pd.read_csv('data/balance.csv', encoding='utf-8')
-        del dfn['Unnamed: 0']
-        new_row = [self.name, self.producer, 0, self.measurment]
-        index = dfn.columns[:len(new_row)]
-        dfn = dfn.append(pd.Series(new_row, index=index), ignore_index=True)
-        dfn.to_csv(r'data/balance.csv')
 
     def changeData(self, index):
         dfn = pd.read_csv('data/products.csv', encoding='utf-8')
@@ -93,14 +82,6 @@ class Product():
         del dfn['Unnamed: 0']
         dfn = dfn.drop(index=index)
         dfn = dfn.reset_index(drop=True)
-        dfn.to_csv(r'data/products.csv')
-
-        # Удаляем со склада
-        dfn = pd.read_csv('data/balance.csv', encoding='utf-8')
-        del dfn['Unnamed: 0']
-        dfn = dfn.drop(index=index)
-        dfn = dfn.reset_index(drop=True)
-        dfn.to_csv(r'data/balance.csv')
 
 def main():
     app = QtWidgets.QApplication(sys.argv)

@@ -486,11 +486,6 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         if self.index == -1:
             return
         print(123)
-
-        name = self.tableWidget.item(self.index, 0).text()
-        producer = self.tableWidget.item(self.index, 1).text()
-        amount = self.tableWidget.item(self.index, 2).text()
-        measurment = self.tableWidget.item(self.index, 3).text()
         # Находить индекс по имени в pd
 
         self.work = BalanceUI()
