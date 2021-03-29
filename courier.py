@@ -23,6 +23,15 @@ class CourierUI(QtWidgets.QMainWindow, courier_ui.Ui_MainWindow):
         self.carriageSize.setText(carriageSize)
         _translate = QtCore.QCoreApplication.translate
         self.addCourierButton.setText(_translate("MainWindow", "Изменить курьера"))
+        self.addCourierButton.clicked.connect(self.checkReg)
+
+    def checkReg(self):
+        cur = CouriersHandler()
+        set_name = cur.setName(self.textName.toPlainText(), self.textSurname.toPlainText(), self.textPatr.toPlainText(), self.carriageSize.toPlainText())
+
+        if set_name == False:
+            self.txtErr.setText("ФИО должно состоять только из латинских символов или кириллицы")
+            self.txtErr.setStyleSheet("color: rgb(200, 0, 0)")
 
     def addCourier(self):
         self.txtErr.setText("")
@@ -39,7 +48,7 @@ class CourierUI(QtWidgets.QMainWindow, courier_ui.Ui_MainWindow):
             self.txtErr.setText("ФИО должно состоять только из латинских символов или кириллицы")
             self.txtErr.setStyleSheet("color: rgb(200, 0, 0)")
         else:
-            self.hide()
+            self.close()
 
 class CouriersHandler(WorkersHandler):
 
@@ -51,7 +60,7 @@ class CouriersHandler(WorkersHandler):
         pattern2 = re.compile(r'^[1-9]+$')
         nsp = [nm, sm, pt]
         for str in nsp:
-            if patternRus.search(str) is None or patternEng.search(str) is None:
+            if patternRus.search(str) is None and patternEng.search(str) is None:
                 return False
 
         if pattern2.search(cs) is None:
@@ -99,6 +108,8 @@ class Courier(Worker):
     def changeCourier(self, name, surename, patronymic, carriageSize):
         dfn = pd.read_csv('data/couriers.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
+        if not CouriersHandler().setName(name, surename, patronymic, carriageSize):
+            return
         dfn.iloc[self.index,0] = name
         dfn.iloc[self.index,1] = surename
         dfn.iloc[self.index,2] = patronymic
