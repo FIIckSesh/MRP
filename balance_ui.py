@@ -9,6 +9,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import numpy as np
+import pandas as pd
 
 
 class Ui_MainWindow(object):
@@ -17,20 +19,24 @@ class Ui_MainWindow(object):
         MainWindow.resize(933, 108)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        #Наимевание продукции
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.lName = QtWidgets.QLabel(self.centralwidget)
         self.lName.setAlignment(QtCore.Qt.AlignCenter)
         self.lName.setObjectName("lName")
+
         self.verticalLayout.addWidget(self.lName)
-        self.name = QtWidgets.QLineEdit(self.centralwidget)
+        self.name = QtWidgets.QComboBox(self.centralwidget)
+        self.initProductComboBox()
+        self.name.setCurrentIndex(-1)
+
         self.name.setObjectName("name")
         self.verticalLayout.addWidget(self.name)
         self.horizontalLayout_2.addLayout(self.verticalLayout)
+        #Производитель
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.lProducer = QtWidgets.QLabel(self.centralwidget)
@@ -39,8 +45,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.lProducer)
         self.producer = QtWidgets.QLineEdit(self.centralwidget)
         self.producer.setObjectName("producer")
+        self.producer.setReadOnly(True)
         self.verticalLayout_2.addWidget(self.producer)
         self.horizontalLayout_2.addLayout(self.verticalLayout_2)
+        #Количество
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.lAmount = QtWidgets.QLabel(self.centralwidget)
@@ -51,6 +59,7 @@ class Ui_MainWindow(object):
         self.amount.setObjectName("amount")
         self.verticalLayout_3.addWidget(self.amount)
         self.horizontalLayout_2.addLayout(self.verticalLayout_3)
+        #Единицы измерения
         self.verticalLayout_4 = QtWidgets.QVBoxLayout()
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.lMeasurment = QtWidgets.QLabel(self.centralwidget)
@@ -59,8 +68,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.lMeasurment)
         self.measurment = QtWidgets.QLineEdit(self.centralwidget)
         self.measurment.setObjectName("measurment")
+        self.measurment.setReadOnly(True)
         self.verticalLayout_4.addWidget(self.measurment)
         self.horizontalLayout_2.addLayout(self.verticalLayout_4)
+        #Кнопки принять/отменить
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.verticalLayout_5.addLayout(self.horizontalLayout_2)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -76,7 +89,14 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.name.currentIndexChanged.connect(lambda x: self.nameCurrentUndexChanged(x))
+
+    def nameCurrentUndexChanged(self, index):
+        dfn = pd.read_csv('data/products.csv', encoding='utf-8')
+        del dfn['Unnamed: 0']
+        self.producer.setText(str(dfn.iloc[index, 1]))
+        self.measurment.setText(str(dfn.iloc[index, 3]))
+        
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -87,3 +107,16 @@ class Ui_MainWindow(object):
         self.lMeasurment.setText(_translate("MainWindow", "Ед измерения"))
         self.acceptButton.setText(_translate("MainWindow", "Принять"))
         self.cancelButton.setText(_translate("MainWindow", "Отменить"))
+
+    def initProductComboBox(self):
+        self.name.clear()
+        dfn = pd.read_csv('data/products.csv', encoding='utf-8')
+        del dfn['Unnamed: 0']
+        k = 0
+        while True:
+            try:
+                dfn.iloc[k, 0]
+            except:
+                break
+            self.name.addItem(dfn.iloc[k, 0])
+            k += 1

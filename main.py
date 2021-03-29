@@ -491,15 +491,11 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         producer = self.tableWidget.item(self.index, 1).text()
         amount = self.tableWidget.item(self.index, 2).text()
         measurment = self.tableWidget.item(self.index, 3).text()
+        # Находить индекс по имени в pd
 
         self.work = BalanceUI()
-        self.work.name.setText(name)
-        self.work.name.setReadOnly(True)
-        self.work.producer.setText(producer)
-        self.work.producer.setReadOnly(True)
+        self.work.initProductComboBox()
         self.work.amount.setText(amount)
-        self.work.measurment.setText(measurment)
-        self.work.measurment.setReadOnly(True)
         self.work.show()
         self.work.acceptButton.clicked.connect(self.changeClick)
         self.work.acceptButton.clicked.connect(self.fillTableBalance)

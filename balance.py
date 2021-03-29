@@ -13,7 +13,7 @@ class BalanceUI(QtWidgets.QMainWindow, balance_ui.Ui_MainWindow):
         self.cancelButton.clicked.connect(self.close)
 
     def addBalanceToData(self):
-        name = self.name.text()
+        name = self.name.currentText()
         producer = self.producer.text()
         amount = self.amount.text()
         measurment = self.measurment.text()
