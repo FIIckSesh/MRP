@@ -1,2 +1,6 @@
 ,Courier,The date,Product,Count,Client,Address
 0,Никита Алексеенко Алексеевич,27.10.2000,Соль,100000,Никита Алексеенко Алексеевич,Puskina Kolotuskina
+1,<PyQt5.QtWidgets.QComboBox object at 0x13ffe5040>,<PyQt5.QtWidgets.QDateEdit object at 0x13ffe51f0>,<PyQt5.QtWidgets.QComboBox object at 0x13ffd6f70>,<PyQt5.QtWidgets.QSpinBox object at 0x13ffe5280>,<PyQt5.QtWidgets.QComboBox object at 0x13ffe5160>,<PyQt5.QtWidgets.QComboBox object at 0x13ffe50d0>
+2,Sesh Real,01.01.2000,Pivo,0,Sesh 75673565676,Puskina Kolotuskina
+3,Sesh Real,01.01.2000,Pivo,0,Sesh 75673565676,Puskina Kolotuskina
+4,Sesh Real,01.01.2000,Pivo,0,Sesh 75673565676,Puskina Kolotuskina
