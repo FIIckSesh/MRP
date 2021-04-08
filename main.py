@@ -11,6 +11,7 @@ from product import ProductUI, Product
 from courier import CourierUI, Courier
 from balance import BalanceUI, Balance
 from clients import ClientUI, Client
+from transaction import Transction, TransctionUI
 
 class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
     def __init__(self):
@@ -321,7 +322,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
                 #self.delShipping()
                 pass
             if text == self.items[2]:
-                #self.delTransaction()
+                self.delTransaction()
                 pass
 
     def openWorker(self):
@@ -443,7 +444,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.work.show()
         self.work.addCourierButton.clicked.connect(self.addCourierButtonClicked)
         self.work.addCourierButton.clicked.connect(self.fillTableCouriers)
-        self.work.addCourierButton.clicked.connect(self.work.hide)
+        self.work.addCourierButton.clicked.connect(self.work.close)
         pass
 
     def addCourierButtonClicked(self):
@@ -462,10 +463,41 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.fillTableCouriers()
 
     def openTransaction(self):
+        self.work = TransctionUI()
+        self.work.show()
+        self.work.accept.clicked.connect(self.work.AcceptClicked)
+        self.work.accept.clicked.connect(self.fillTableTransaction)
         pass
 
     def changedTransaction(self):
+        self.i = self.tableWidget.row(self.tableWidget.currentItem())
+        if self.i == -1:
+            return
+        self.work = TransctionUI()
+        self.work.show()
+
+        self.work.ChangedWindow(self.tableWidget.item(self.i, 0).text(),self.tableWidget.item(self.i, 1).text(), self.tableWidget.item(self.i, 2).text(), self.tableWidget.item(self.i, 3).text(), self.tableWidget.item(self.i, 4).text(), self.tableWidget.item(self.i, 5).text())
+        self.work.accept.clicked.connect(self.changeTransactionHelp)
+        self.work.accept.clicked.connect(self.fillTableTransaction)
+        self.work.accept.clicked.connect(self.work.close)
         pass
+
+    def changeTransactionHelp(self):
+        seller = self.work.seller.currentText()
+        client = self.work.client.currentText()
+        date = self.work.date.text()
+        product = self.work.product.currentText()
+        amount = self.work.amount.text()
+        price = self.work.price.text()
+
+        Transction(self.i).ChangeInfo(self.i, seller, client, date, product, amount, price)
+        
+    def delTransaction(self):
+        self.i = self.tableWidget.row(self.tableWidget.currentItem())
+        if self.i == -1:
+            return
+        Transction(self.i).DeleteTransactionInfo(self.i)
+        self.fillTableTransaction()
 
     def openShipping(self):
         pass
