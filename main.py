@@ -510,7 +510,6 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.work.show()
         self.work.acceptButton.clicked.connect(self.work.addBalanceToData)
         self.work.acceptButton.clicked.connect(self.fillTableBalance)
-        #self.hide()
         pass
 
     def changedBalance(self):
