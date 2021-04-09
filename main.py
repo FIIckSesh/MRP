@@ -6,6 +6,8 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 import main_screen_ui  # Это наш конвертированный файл дизайна
 import changed_worker_ui
 import ui_clients
+import shipment_ui
+from shipment import Shipment, ShipmentUI
 from worker import WorkerUI, Worker
 from product import ProductUI, Product
 from courier import CourierUI, Courier
@@ -319,7 +321,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
                 self.delBalance()
                 pass
             if text == self.items[1]:
-                #self.delShipping()
+                self.delShipping()
                 pass
             if text == self.items[2]:
                 self.delTransaction()
@@ -357,7 +359,7 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         index = self.tableWidget.row(self.tableWidget.currentItem())
         if index == -1:
             return
-        Client().removeClient(index)
+        Client(index).removeClient()
         self.fillTableClients()
 
     def changedClient(self):
@@ -374,10 +376,6 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.client = ChangedClientUI(index, name.text(), surename.text(), patr.text(), street.text(), house.text(), phone.text())
         self.client.show()
         self.client.windowTitleChanged.connect(self.fillTableClients)
-
-        ##self.work = ClientUI()
-        #self.work.show()
-        #self.hide()
         pass
 
     def openProduct(self):
@@ -500,9 +498,35 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
         self.fillTableTransaction()
 
     def openShipping(self):
+        self.work = ShipmentUI()
+        self.work.show()
+        self.work.pushButton.clicked.connect(self.fillTableShipment)
         pass
 
     def changedShipping(self):
+        index = self.tableWidget.row(self.tableWidget.currentItem())
+        if index == -1:
+            return
+
+        courier = self.tableWidget.item(index, 0).text()
+        date = self.tableWidget.item(index, 1).text()
+        product = self.tableWidget.item(index, 2).text()
+        count = self.tableWidget.item(index, 3).text()
+        client = self.tableWidget.item(index, 4).text()
+        address =  self.tableWidget.item(index, 5).text()
+
+        self.work = ChangedShipmentUI(index, courier, date, product, count, client, address)
+        self.work.show()
+        self.work.pushButton.clicked.connect(self.fillTableShipment)
+        pass
+
+    def delShipping(self):
+        index = self.tableWidget.row(self.tableWidget.currentItem())
+        if index == -1:
+            return
+        
+        Shipment(index).removeShipment()
+        self.fillTableShipment()
         pass
 
     def showBalance(self):
@@ -592,6 +616,34 @@ class ChangedClientUI(QtWidgets.QMainWindow, ui_clients.Ui_MainWindow):
         self.phone = self.textNumber.toPlainText()
         Client(self.index).changeData(self.name, self.surname, self.patronymic, self.street, self.house, self.phone)
         self.setWindowTitle("done")
+        self.hide()
+
+class ChangedShipmentUI(QtWidgets.QMainWindow, shipment_ui.Ui_MainWindow):
+
+    def __init__(self, index, courier, date, product, count, client, address):
+        # Это здесь нужно для доступа к переменным, методам
+        # и т.д. в файле design.py
+        super().__init__()
+        self.setupUi(self)
+        self.pushButton.setText("Редактировать клиента")
+        self.Courier.setCurrentIndex(self.Courier.findText(courier))
+        self.dateEdit.setDate(QtCore.QDate(int(date.split('.')[2]),  int(date.split('.')[1]), int(date.split('.')[0])))
+        self.Product.setCurrentIndex(self.Product.findText(product))
+        self.spinBox.setValue(int(count))
+        self.Client.setCurrentIndex(self.Client.findText(client))
+        self.Address.setCurrentIndex(self.Address.findText(address))
+        self.index = index
+
+        self.pushButton.clicked.connect(self.changeShipment)
+
+    def changeShipment(self):
+        courier = self.Courier.currentText()
+        date = self.dateEdit.text()
+        product = self.Product.currentText()
+        count = self.spinBox.text()
+        client = self.Client.currentText()
+        address =  self.Address.currentText()
+        Shipment(self.index).changeData(courier, date, product, count, client, address)
         self.hide()
 
 
