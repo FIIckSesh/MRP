@@ -521,7 +521,8 @@ class MainScreen(QtWidgets.QMainWindow, main_screen_ui.Ui_MainWindow):
 
         self.work = BalanceUI()
         self.work.initProductComboBox()
-        self.work.amount.setText(amount)
+        self.work.amount.setText(self.tableWidget.item(self.index, 2).text())
+        self.work.name.setCurrentIndex(self.work.name.findText(self.tableWidget.item(self.index, 0).text()))
         self.work.show()
         self.work.acceptButton.clicked.connect(self.changeClick)
         self.work.acceptButton.clicked.connect(self.fillTableBalance)
