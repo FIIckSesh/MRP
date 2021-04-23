@@ -94,7 +94,7 @@ class Ui_MainWindow(object):
     def nameCurrentUndexChanged(self, index):
         dfn = pd.read_csv('data/products.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
-        self.producer.setText(str(dfn.iloc[index, 1]))
+        self.producer.setText(str(dfn.iloc[index, 2]))
         self.measurment.setText(str(dfn.iloc[index, 3]))
         
 
