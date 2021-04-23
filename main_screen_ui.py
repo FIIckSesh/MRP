@@ -17,7 +17,6 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
         MainWindow.resize(1027, 479)
-        MainWindow.setStyleSheet("background: #FFFFFF;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
@@ -76,8 +75,8 @@ class Ui_MainWindow(object):
         self.movementButton.setGeometry(QtCore.QRect(840, 20, 156, 23))
         self.movementButton.setStyleSheet("")
         self.movementButton.setObjectName("movementButton")
-        
-        
+
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1027, 24))

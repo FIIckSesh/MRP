@@ -9,15 +9,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1027</width>
-    <height>479</height>
+    <width>1023</width>
+    <height>477</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: #FFFFFF;</string>
+   <string notr="true">background: #5585B5;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="widget" native="true">
@@ -33,13 +33,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">position: absolute;
-width: 979px;
-height: 381px;
-left: 25px;
-top: 74px;
-
-background: #CF9292;</string>
+     <string notr="true">background: #66717F;</string>
     </property>
     <widget class="QPushButton" name="changedButton">
      <property name="enabled">
@@ -54,13 +48,16 @@ background: #CF9292;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">position: absolute;
-width: 299px;
-height: 46px;
-left: 695px;
-top: 93px;
-
-background: #C4C4C4;</string>
+      <string notr="true">border: 2px solid;
+border-radius: 4px;
+box-sizing: border-box;
+cursor: pointer;
+outline: none;
+position: relative;
+transition: 0.3s;
+font-weight: 600;
+vertical-align: middle;
+background: #F27171;</string>
      </property>
      <property name="text">
       <string>Редактировать</string>
@@ -76,13 +73,16 @@ background: #C4C4C4;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">position: absolute;
-width: 299px;
-height: 45px;
-left: 695px;
-top: 165px;
-
-background: #C4C4C4;</string>
+      <string notr="true">border: 2px solid;
+border-radius: 4px;
+box-sizing: border-box;
+cursor: pointer;
+outline: none;
+position: relative;
+transition: 0.3s;
+font-weight: 600;
+vertical-align: middle;
+background: #F27171;</string>
      </property>
      <property name="text">
       <string>Удалить</string>
@@ -98,13 +98,16 @@ background: #C4C4C4;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">position: absolute;
-width: 299px;
-height: 46px;
-left: 695px;
-top: 236px;
-
-background: #C4C4C4;</string>
+      <string notr="true">border: 2px solid;
+border-radius: 4px;
+box-sizing: border-box;
+cursor: pointer;
+outline: none;
+position: relative;
+transition: 0.3s;
+font-weight: 600;
+vertical-align: middle;
+background: #F27171;</string>
      </property>
      <property name="text">
       <string>Добавить</string>
@@ -123,13 +126,7 @@ background: #C4C4C4;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">position: absolute;
-width: 632px;
-height: 344px;
-left: 45px;
-top: 93px;
-
-background: #C4C4C4;</string>
+      <string notr="true">background: #F4F6F9;</string>
      </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOn</enum>
@@ -149,7 +146,13 @@ background: #C4C4C4;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">position: relative;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: 0.3s;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="directoryButton">
@@ -162,13 +165,18 @@ background: #C4C4C4;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">position: absolute;
-width: 88px;
-height: 39px;
-left: 801px;
-top: 20px;
-
-background: #C4C4C4;</string>
+     <string notr="true">font-size: 14px;
+    color: #66717f;
+    padding: 0 14px;
+    border: 2px solid;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    transition: 0.3s;
+    font-weight: 600;
+    vertical-align: middle;</string>
     </property>
     <property name="text">
      <string>Справочники</string>
@@ -184,13 +192,18 @@ background: #C4C4C4;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">position: absolute;
-width: 88px;
-height: 39px;
-left: 914px;
-top: 20px;
-
-background: #C4C4C4;</string>
+     <string notr="true">font-size: 14px;
+    color: #66717f;
+    padding: 0 14px;
+    border: 2px solid;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    transition: 0.3s;
+    font-weight: 600;
+    vertical-align: middle;</string>
     </property>
     <property name="text">
      <string>Движения</string>
@@ -202,7 +215,7 @@ background: #C4C4C4;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1027</width>
+     <width>1023</width>
      <height>24</height>
     </rect>
    </property>
