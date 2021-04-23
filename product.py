@@ -67,21 +67,21 @@ class Product():
         dfn.to_csv(r'data/products.csv')
 
     def removeProduct(self, index):
-        print(index)
 
         # Удаляем из товаров
         dfn = pd.read_csv('data/products.csv', encoding='utf-8')
 
+        del dfn['Unnamed: 0']
+
         # Проверка индекса
         try:
              dfn.iloc[index, 0]
-        except LookupError:
+        except:
             print("out of frame")
             return
-
-        del dfn['Unnamed: 0']
         dfn = dfn.drop(index=index)
         dfn = dfn.reset_index(drop=True)
+        dfn.to_csv(r'data/products.csv')
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
