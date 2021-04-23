@@ -17,7 +17,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: #F4F6F9;</string>
+   <string notr="true">background: #5585B5;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="widget" native="true">
@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #5585B5;</string>
+     <string notr="true">background: #66717F;</string>
     </property>
     <widget class="QPushButton" name="changedButton">
      <property name="enabled">
@@ -126,16 +126,7 @@ background: #F27171;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border: 2px solid;
-border-radius: 4px;
-box-sizing: border-box;
-cursor: pointer;
-outline: none;
-position: relative;
-transition: 0.3s;
-font-weight: 600;
-vertical-align: middle;
-background: #F27171;</string>
+      <string notr="true">background: #F4F6F9;</string>
      </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOn</enum>
@@ -155,18 +146,13 @@ background: #F27171;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-size: 14px;
-    color: #66717f;
-    padding: 0 14px;
-    border: 2px solid;
+     <string notr="true">position: relative;
+    border: 1px solid #DCDEE1;
     border-radius: 4px;
-    box-sizing: border-box;
-    cursor: pointer;
     outline: none;
-    position: relative;
-    transition: 0.3s;
-    font-weight: 600;
-    vertical-align: middle;</string>
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: 0.3s;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="directoryButton">

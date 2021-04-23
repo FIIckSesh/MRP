@@ -9,127 +9,77 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1023, 477)
-        MainWindow.setStyleSheet("background: #F4F6F9;")
+        MainWindow.resize(1027, 479)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+
+
         self.widget = QtWidgets.QWidget(self.centralwidget)
         self.widget.setEnabled(True)
         self.widget.setGeometry(QtCore.QRect(25, 51, 979, 381))
-        self.widget.setStyleSheet("background: #5585B5;")
+        #Здесь всё идет по пизде
+        self.widget.setStyleSheet("")
         self.widget.setObjectName("widget")
+
+
         self.changedButton = QtWidgets.QPushButton(self.widget)
         self.changedButton.setEnabled(True)
         self.changedButton.setGeometry(QtCore.QRect(650, 70, 321, 46))
-        self.changedButton.setStyleSheet("border: 2px solid;\n"
-"border-radius: 4px;\n"
-"box-sizing: border-box;\n"
-"cursor: pointer;\n"
-"outline: none;\n"
-"position: relative;\n"
-"transition: 0.3s;\n"
-"font-weight: 600;\n"
-"vertical-align: middle;\n"
-"background: #F27171;")
+        self.changedButton.setStyleSheet("")
         self.changedButton.setObjectName("changedButton")
+
+
         self.delButton = QtWidgets.QPushButton(self.widget)
         self.delButton.setGeometry(QtCore.QRect(650, 130, 321, 46))
-        self.delButton.setStyleSheet("border: 2px solid;\n"
-"border-radius: 4px;\n"
-"box-sizing: border-box;\n"
-"cursor: pointer;\n"
-"outline: none;\n"
-"position: relative;\n"
-"transition: 0.3s;\n"
-"font-weight: 600;\n"
-"vertical-align: middle;\n"
-"background: #F27171;")
+        self.delButton.setStyleSheet("")
         self.delButton.setObjectName("delButton")
+
+
         self.addButton = QtWidgets.QPushButton(self.widget)
         self.addButton.setGeometry(QtCore.QRect(650, 10, 321, 46))
-        self.addButton.setStyleSheet("border: 2px solid;\n"
-"border-radius: 4px;\n"
-"box-sizing: border-box;\n"
-"cursor: pointer;\n"
-"outline: none;\n"
-"position: relative;\n"
-"transition: 0.3s;\n"
-"font-weight: 600;\n"
-"vertical-align: middle;\n"
-"background: #F27171;")
+        self.addButton.setStyleSheet("")
         self.addButton.setObjectName("addButton")
+
+
         self.tableWidget = QtWidgets.QTableWidget(self.widget)
         self.tableWidget.setEnabled(True)
         self.tableWidget.setGeometry(QtCore.QRect(10, 10, 632, 361))
-        self.tableWidget.setStyleSheet("border: 2px solid;\n"
-"border-radius: 4px;\n"
-"box-sizing: border-box;\n"
-"cursor: pointer;\n"
-"outline: none;\n"
-"position: relative;\n"
-"transition: 0.3s;\n"
-"font-weight: 600;\n"
-"vertical-align: middle;\n"
-"background: #F27171;")
+        self.tableWidget.setStyleSheet("")
         self.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(0)
         self.tableWidget.setRowCount(0)
+
+
         self.comboBox = QtWidgets.QComboBox(self.centralwidget)
         self.comboBox.setGeometry(QtCore.QRect(25, 20, 304, 23))
-        self.comboBox.setStyleSheet("font-size: 14px;\n"
-"    color: #66717f;\n"
-"    padding: 0 14px;\n"
-"    border: 2px solid;\n"
-"    border-radius: 4px;\n"
-"    box-sizing: border-box;\n"
-"    cursor: pointer;\n"
-"    outline: none;\n"
-"    position: relative;\n"
-"    transition: 0.3s;\n"
-"    font-weight: 600;\n"
-"    vertical-align: middle;")
+        self.comboBox.setStyleSheet("background: #C4C4C4;")
         self.comboBox.setObjectName("comboBox")
+
+
         self.directoryButton = QtWidgets.QPushButton(self.centralwidget)
         self.directoryButton.setGeometry(QtCore.QRect(675, 20, 156, 23))
-        self.directoryButton.setStyleSheet("font-size: 14px;\n"
-"    color: #66717f;\n"
-"    padding: 0 14px;\n"
-"    border: 2px solid;\n"
-"    border-radius: 4px;\n"
-"    box-sizing: border-box;\n"
-"    cursor: pointer;\n"
-"    outline: none;\n"
-"    position: relative;\n"
-"    transition: 0.3s;\n"
-"    font-weight: 600;\n"
-"    vertical-align: middle;")
+        self.directoryButton.setStyleSheet("")
         self.directoryButton.setObjectName("directoryButton")
+
+
         self.movementButton = QtWidgets.QPushButton(self.centralwidget)
         self.movementButton.setGeometry(QtCore.QRect(840, 20, 156, 23))
-        self.movementButton.setStyleSheet("font-size: 14px;\n"
-"    color: #66717f;\n"
-"    padding: 0 14px;\n"
-"    border: 2px solid;\n"
-"    border-radius: 4px;\n"
-"    box-sizing: border-box;\n"
-"    cursor: pointer;\n"
-"    outline: none;\n"
-"    position: relative;\n"
-"    transition: 0.3s;\n"
-"    font-weight: 600;\n"
-"    vertical-align: middle;")
+        self.movementButton.setStyleSheet("")
         self.movementButton.setObjectName("movementButton")
+
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1023, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1027, 24))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -137,11 +87,11 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        #QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Лучшее дизайнерское решение эвер"))
         self.changedButton.setText(_translate("MainWindow", "Редактировать"))
         self.delButton.setText(_translate("MainWindow", "Удалить"))
         self.addButton.setText(_translate("MainWindow", "Добавить"))
