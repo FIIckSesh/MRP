@@ -1,4 +1,3 @@
-#Абстрактная фабрика
 import numpy as np
 import pandas as pd
 import sys
@@ -6,7 +5,6 @@ from PyQt5 import QtWidgets,QtCore
 import product_ui
 import re
 from accessify import protected
-from AbstractFactory import Directory
 
 # логика интерфейса
 class ProductUI(QtWidgets.QMainWindow, product_ui.Ui_MainWindow):
@@ -22,7 +20,20 @@ class ProductUI(QtWidgets.QMainWindow, product_ui.Ui_MainWindow):
         price = self.priceLine.text()
         producer = self.producerLine.text()
         measurment = self.measurmentLine.text()
-        Product(name, price, producer, measurment).addCsv()
+
+        # Создаем объект и добавляем в csv файл
+        dfn = pd.read_csv('data/products.csv', encoding='utf-8')
+
+        # Проверка на уникальность товара
+        for index, row in dfn.iterrows():
+            if row['Name'] == name:
+                return
+
+        del dfn['Unnamed: 0']
+        new_row = [name, price, producer, measurment]
+        index = dfn.columns[:len(new_row)]
+        dfn = dfn.append(pd.Series(new_row, index=index), ignore_index=True)
+        dfn.to_csv(r'data/products.csv')
 
 
         self.close()
@@ -36,25 +47,18 @@ class ProductUI(QtWidgets.QMainWindow, product_ui.Ui_MainWindow):
         self.prodAddBtn.setText(_translate("MainWindow", "Изменить товар"))
 
 
-class Product(Directory):
-    def __init__(self, name=None, price=None, producer=None, measurment=None):
+class Product():
+    def __init__(self, name, price, producer, measurment):
         self.name = name
         self.price = price
         self.producer = producer
         self.measurment = measurment
 
-    def addCsv(self):
-        # Создаем объект и добавляем в csv файл
-        dfn = pd.read_csv('data/products.csv', encoding='utf-8')
-        del dfn['Unnamed: 0']
-        new_row = [self.name, self.price, self.producer, self.measurment]
-        index = dfn.columns[:len(new_row)]
-        dfn = dfn.append(pd.Series(new_row, index=index), ignore_index=True)
-        dfn.to_csv(r'data/products.csv')
-
     def changeData(self, index):
         dfn = pd.read_csv('data/products.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
+        print(dfn.iloc[0])
+        print(self.name, self.price, self.producer, self.measurment, index)
 
         dfn.iloc[index,0] = self.name
         dfn.iloc[index,1] = self.price
@@ -63,9 +67,12 @@ class Product(Directory):
         dfn.to_csv(r'data/products.csv')
 
     def removeProduct(self, index):
+
         # Удаляем из товаров
         dfn = pd.read_csv('data/products.csv', encoding='utf-8')
+
         del dfn['Unnamed: 0']
+
         # Проверка индекса
         try:
              dfn.iloc[index, 0]

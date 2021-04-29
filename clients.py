@@ -10,7 +10,8 @@ class ClientUI(QtWidgets.QMainWindow, ui_clients.Ui_MainWindow):
 
     def __init__(self):
         # Это здесь нужно для доступа к переменным, методам
-        # и т.д. в файле ui_clients.py
+        # и т.д. в файле design.py
+
         super().__init__()
         self.setupUi(self)
         self.addClientButton.clicked.connect(self.addClient)
@@ -26,14 +27,18 @@ class ClientUI(QtWidgets.QMainWindow, ui_clients.Ui_MainWindow):
         number = self.textNumber.toPlainText()
 
         set_name = client.setName(name, surname, patronymic, street, house, number)
+#<<<<<<< HEAD
         self.setWindowTitle("done")
         self.hide()
+#=======
+#>>>>>>> parent of 31beef7 (123)
 
 
         print(set_name)
 
 
 class ClientsHandler():
+
     def __init__(self):
         self.__name = None
         self.__surename = None
@@ -60,18 +65,32 @@ class ClientsHandler():
 
         self.addCsv()
 
+
         return True
+
     @protected
     def addCsv(self):
+#<<<<<<< HEAD
         dfn = pd.read_csv('data/clients.csv', encoding='utf-8')
+#=======
+#        dfn = pd.read_csv('clients.csv', encoding='utf-8')
+#>>>>>>> parent of 31beef7 (123)
+
         del dfn['Unnamed: 0']
 
-        new_row = [self.__name, self.__surename, self.__patronymic, self.__street, self.__house, self.__phone_number]
-        dfn = dfn.append(pd.Series(new_row, index=dfn.columns[:len(new_row)]), ignore_index=True)
-        dfn.to_csv(r'data/clients.csv')
 
+        new_row = [self.__name, self.__surename, self.__patronymic, self.__street, self.__house, self.__phone_number]
+
+        dfn = dfn.append(pd.Series(new_row, index=dfn.columns[:len(new_row)]), ignore_index=True)
+
+#<<<<<<< HEAD
+        dfn.to_csv(r'data/clients.csv')
+#=======
+#        dfn.to_csv(r'clients.csv')
+#>>>>>>> parent of 31beef7 (123)
 
 class Client():
+
     def __init__(self, index):
         self.name = None
         self.surename = None
@@ -95,19 +114,39 @@ class Client():
         self.house = dfn.loc[self.index][4]
         self.phone_number = dfn.loc[self.index][5]
 
+#<<<<<<< HEAD
+#<<<<<<< HEAD
+#    def removeClient(self, index):
+#        print(index)
+#=======
     def removeClient(self):
+        print(self.index)
+#>>>>>>> 41fd03c46743a4e67b4bd2a698114aaa2c51f059
+#=======
+#    def removeClient(self, index):
+#        print(index)
+#>>>>>>> parent of 31beef7 (123)
 
+        # Удаляем из товаров
         dfn = pd.read_csv('data/clients.csv', encoding='utf-8')
 
+        # Проверка индекса
         try:
+#<<<<<<< HEAD
              dfn.iloc[self.index, 0]
-
-        except:
+#=======
+#             dfn.iloc[index, 0]
+#>>>>>>> parent of 31beef7 (123)
+        except LookupError:
             print("out of frame")
             return
 
         del dfn['Unnamed: 0']
+#<<<<<<< HEAD
         dfn = dfn.drop(index=self.index)
+#=======
+#        dfn = dfn.drop(index=index)
+#>>>>>>> parent of 31beef7 (123)
         dfn = dfn.reset_index(drop=True)
         dfn.to_csv(r'data/clients.csv')
 
@@ -115,6 +154,7 @@ class Client():
         dfn = pd.read_csv('data/clients.csv', encoding='utf-8')
         del dfn['Unnamed: 0']
 
+        #print(self.index, name, surename, patr, street, house, phone)
         print(name)
         print(dfn.loc[self.index][0])
         dfn.iloc[self.index, 0] = name
