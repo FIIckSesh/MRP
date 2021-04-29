@@ -14,46 +14,81 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(610, 258)
-        MainWindow.setStyleSheet("background: #CF9292;\n"
+        MainWindow.resize(417, 429)
+        MainWindow.setStyleSheet("background: #5585B5;\n"
+"padding: 0;\n"
+"    margin: 0;\n"
+"    font-family: \'Open Sans\', sans-serif;\n"
+"    font-size: 14px;\n"
+"    color: #1D2734;\n"
 "")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.textSurname = QtWidgets.QTextEdit(self.centralwidget)
-        self.textSurname.setGeometry(QtCore.QRect(250, 60, 104, 51))
-        self.textSurname.setStyleSheet("background: #C4C4C4;")
+        self.textSurname.setGeometry(QtCore.QRect(120, 100, 221, 51))
+        self.textSurname.setStyleSheet("width: 100%;\n"
+"    outline: none;\n"
+"    border: 1px solid #DCDEE1;\n"
+"    border-radius: 4px;\n"
+"    color: #1D2734;\n"
+"    padding-left: 16px;\n"
+"    box-sizing: border-box;\n"
+"    -webkit-appearance: none;")
         self.textSurname.setObjectName("textSurname")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(272, 40, 60, 16))
+        self.label.setGeometry(QtCore.QRect(40, 110, 60, 16))
         self.label.setStyleSheet("")
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(140, 40, 31, 16))
+        self.label_2.setGeometry(QtCore.QRect(50, 50, 31, 16))
         self.label_2.setStyleSheet("")
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(420, 40, 60, 16))
+        self.label_3.setGeometry(QtCore.QRect(39, 170, 61, 20))
         self.label_3.setStyleSheet("")
         self.label_3.setObjectName("label_3")
         self.textName = QtWidgets.QTextEdit(self.centralwidget)
-        self.textName.setGeometry(QtCore.QRect(100, 60, 104, 51))
-        self.textName.setStyleSheet("background: #C4C4C4;")
+        self.textName.setGeometry(QtCore.QRect(120, 40, 221, 51))
+        self.textName.setStyleSheet("width: 100%;\n"
+"    outline: none;\n"
+"    border: 1px solid #DCDEE1;\n"
+"    border-radius: 4px;\n"
+"    color: #1D2734;\n"
+"    padding-left: 16px;\n"
+"    box-sizing: border-box;\n"
+"    -webkit-appearance: none;")
         self.textName.setObjectName("textName")
         self.textPatr = QtWidgets.QTextEdit(self.centralwidget)
-        self.textPatr.setGeometry(QtCore.QRect(400, 60, 104, 51))
-        self.textPatr.setStyleSheet("background: #C4C4C4;")
+        self.textPatr.setGeometry(QtCore.QRect(120, 160, 221, 51))
+        self.textPatr.setStyleSheet("width: 100%;\n"
+"    outline: none;\n"
+"    border: 1px solid #DCDEE1;\n"
+"    border-radius: 4px;\n"
+"    color: #1D2734;\n"
+"    padding-left: 16px;\n"
+"    box-sizing: border-box;\n"
+"    -webkit-appearance: none;")
         self.textPatr.setObjectName("textPatr")
         self.addWorkerButton = QtWidgets.QPushButton(self.centralwidget)
-        self.addWorkerButton.setGeometry(QtCore.QRect(172, 120, 261, 32))
-        self.addWorkerButton.setStyleSheet("background: #C4C4C4;")
+        self.addWorkerButton.setGeometry(QtCore.QRect(90, 320, 261, 32))
+        self.addWorkerButton.setStyleSheet("border: 2px solid;\n"
+"border-radius: 4px;\n"
+"box-sizing: border-box;\n"
+"cursor: pointer;\n"
+"outline: none;\n"
+"position: relative;\n"
+"transition: 0.3s;\n"
+"font-weight: 600;\n"
+"vertical-align: middle;\n"
+"background: #F27171;")
         self.addWorkerButton.setObjectName("addWorkerButton")
         self.txtErr = QtWidgets.QLabel(self.centralwidget)
-        self.txtErr.setGeometry(QtCore.QRect(90, 170, 471, 31))
+        self.txtErr.setGeometry(QtCore.QRect(40, 270, 291, 20))
         self.txtErr.setText("")
         self.txtErr.setObjectName("txtErr")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 610, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 417, 19))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)

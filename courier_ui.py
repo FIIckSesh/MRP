@@ -82,6 +82,20 @@ class Ui_MainWindow(object):
         self.txtErr.setGeometry(QtCore.QRect(90, 280, 241, 20))
         self.txtErr.setText("")
         self.txtErr.setObjectName("txtErr")
+        self.carriageSize = QtWidgets.QTextEdit(self.centralwidget)
+        self.carriageSize.setGeometry(QtCore.QRect(140, 220, 201, 51))
+        self.carriageSize.setStyleSheet("width: 100%;\n"
+"    outline: none;\n"
+"    border: 1px solid #DCDEE1;\n"
+"    border-radius: 4px;\n"
+"    color: #1D2734;\n"
+"    padding-left: 16px;\n"
+"    box-sizing: border-box;\n"
+"    -webkit-appearance: none;")
+        self.carriageSize.setObjectName("carriageSize")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(20, 240, 91, 20))
+        self.label_4.setObjectName("label_4")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 399, 19))
@@ -101,3 +115,4 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Фамилия"))
         self.label_2.setText(_translate("MainWindow", "Имя"))
         self.label_3.setText(_translate("MainWindow", "Отчество "))
+        self.label_4.setText(_translate("MainWindow", "Вместимость"))

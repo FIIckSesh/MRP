@@ -14,7 +14,12 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: #CF9292;
+   <string notr="true">background: #5585B5;
+padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #1D2734;
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -28,13 +33,20 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>40</x>
       <y>110</y>
       <width>60</width>
       <height>16</height>
@@ -50,8 +62,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>60</y>
+      <x>50</x>
+      <y>50</y>
       <width>31</width>
       <height>16</height>
      </rect>
@@ -66,10 +78,10 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>39</x>
       <y>170</y>
-      <width>60</width>
-      <height>16</height>
+      <width>61</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -89,7 +101,14 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="textPatr">
@@ -102,20 +121,36 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="addWorkerButton">
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>310</y>
+      <y>320</y>
       <width>261</width>
       <height>32</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">border: 2px solid;
+border-radius: 4px;
+box-sizing: border-box;
+cursor: pointer;
+outline: none;
+position: relative;
+transition: 0.3s;
+font-weight: 600;
+vertical-align: middle;
+background: #F27171;</string>
     </property>
     <property name="text">
      <string>Редактировать сотрудника</string>
@@ -141,7 +176,7 @@
      <x>0</x>
      <y>0</y>
      <width>417</width>
-     <height>24</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>

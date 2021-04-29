@@ -159,6 +159,39 @@ background: #F27171;</string>
      <string/>
     </property>
    </widget>
+   <widget class="QTextEdit" name="carriageSize">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>220</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>240</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Вместимость</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
