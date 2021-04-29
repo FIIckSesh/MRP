@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'product.ui'
+# Form implementation generated from reading ui file 'ui/product.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.2
 #
@@ -14,38 +14,84 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(331, 283)
+        MainWindow.resize(397, 427)
+        MainWindow.setStyleSheet("background: #5585B5;\n"
+"padding: 0;\n"
+"    margin: 0;\n"
+"    font-family: \'Open Sans\', sans-serif;\n"
+"    font-size: 14px;\n"
+"    color: #1D2734;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName("gridLayout")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(50, 130, 33, 16))
         self.label_2.setObjectName("label_2")
-        self.gridLayout.addWidget(self.label_2, 2, 0, 1, 2)
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(20, 270, 101, 16))
         self.label_4.setObjectName("label_4")
-        self.gridLayout.addWidget(self.label_4, 4, 0, 1, 2)
         self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(20, 70, 101, 16))
         self.label.setObjectName("label")
-        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
         self.priceLine = QtWidgets.QLineEdit(self.centralwidget)
+        self.priceLine.setGeometry(QtCore.QRect(135, 120, 201, 51))
+        self.priceLine.setStyleSheet("width: 100%;\n"
+"    outline: none;\n"
+"    border: 1px solid #DCDEE1;\n"
+"    border-radius: 4px;\n"
+"    color: #1D2734;\n"
+"    padding-left: 16px;\n"
+"    box-sizing: border-box;\n"
+"    -webkit-appearance: none;")
         self.priceLine.setObjectName("priceLine")
-        self.gridLayout.addWidget(self.priceLine, 2, 2, 1, 1)
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(12, 204, 111, 16))
         self.label_3.setObjectName("label_3")
-        self.gridLayout.addWidget(self.label_3, 3, 0, 1, 1)
         self.measurmentLine = QtWidgets.QLineEdit(self.centralwidget)
+        self.measurmentLine.setGeometry(QtCore.QRect(135, 249, 201, 51))
+        self.measurmentLine.setStyleSheet("width: 100%;\n"
+"    outline: none;\n"
+"    border: 1px solid #DCDEE1;\n"
+"    border-radius: 4px;\n"
+"    color: #1D2734;\n"
+"    padding-left: 16px;\n"
+"    box-sizing: border-box;\n"
+"    -webkit-appearance: none;")
         self.measurmentLine.setObjectName("measurmentLine")
-        self.gridLayout.addWidget(self.measurmentLine, 4, 2, 1, 1)
         self.nameLine = QtWidgets.QLineEdit(self.centralwidget)
+        self.nameLine.setGeometry(QtCore.QRect(135, 56, 201, 51))
+        self.nameLine.setStyleSheet("width: 100%;\n"
+"    outline: none;\n"
+"    border: 1px solid #DCDEE1;\n"
+"    border-radius: 4px;\n"
+"    color: #1D2734;\n"
+"    padding-left: 16px;\n"
+"    box-sizing: border-box;\n"
+"    -webkit-appearance: none;")
         self.nameLine.setObjectName("nameLine")
-        self.gridLayout.addWidget(self.nameLine, 0, 2, 1, 1)
         self.prodAddBtn = QtWidgets.QPushButton(self.centralwidget)
+        self.prodAddBtn.setGeometry(QtCore.QRect(70, 340, 261, 32))
+        self.prodAddBtn.setStyleSheet("border: 2px solid;\n"
+"border-radius: 4px;\n"
+"box-sizing: border-box;\n"
+"cursor: pointer;\n"
+"outline: none;\n"
+"position: relative;\n"
+"transition: 0.3s;\n"
+"font-weight: 600;\n"
+"vertical-align: middle;\n"
+"background: #F27171;")
         self.prodAddBtn.setObjectName("prodAddBtn")
-        self.gridLayout.addWidget(self.prodAddBtn, 5, 1, 1, 2)
         self.producerLine = QtWidgets.QLineEdit(self.centralwidget)
+        self.producerLine.setGeometry(QtCore.QRect(135, 184, 201, 51))
+        self.producerLine.setStyleSheet("width: 100%;\n"
+"    outline: none;\n"
+"    border: 1px solid #DCDEE1;\n"
+"    border-radius: 4px;\n"
+"    color: #1D2734;\n"
+"    padding-left: 16px;\n"
+"    box-sizing: border-box;\n"
+"    -webkit-appearance: none;")
         self.producerLine.setObjectName("producerLine")
-        self.gridLayout.addWidget(self.producerLine, 3, 2, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)

@@ -6,36 +6,48 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>610</width>
-    <height>258</height>
+    <width>399</width>
+    <height>429</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: #CF9292;
+   <string notr="true">background: #5585B5;
+padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #1D2734;
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTextEdit" name="textSurname">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>60</y>
-      <width>104</width>
+      <x>140</x>
+      <y>100</y>
+      <width>181</width>
       <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>272</x>
-      <y>40</y>
+      <x>40</x>
+      <y>110</y>
       <width>60</width>
       <height>16</height>
      </rect>
@@ -50,8 +62,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>40</y>
+      <x>50</x>
+      <y>60</y>
       <width>31</width>
       <height>16</height>
      </rect>
@@ -66,9 +78,9 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>40</y>
-      <width>60</width>
+      <x>40</x>
+      <y>170</y>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
@@ -82,40 +94,63 @@
    <widget class="QTextEdit" name="textName">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>60</y>
-      <width>104</width>
+      <x>140</x>
+      <y>40</y>
+      <width>181</width>
       <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="textPatr">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>60</y>
-      <width>104</width>
+      <x>140</x>
+      <y>160</y>
+      <width>181</width>
       <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="addWorkerButton">
     <property name="geometry">
      <rect>
-      <x>172</x>
-      <y>120</y>
+      <x>70</x>
+      <y>320</y>
       <width>261</width>
       <height>32</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">border: 2px solid;
+border-radius: 4px;
+box-sizing: border-box;
+cursor: pointer;
+outline: none;
+position: relative;
+transition: 0.3s;
+font-weight: 600;
+vertical-align: middle;
+background: #F27171;</string>
     </property>
     <property name="text">
      <string>Добавить сотрудника</string>
@@ -125,9 +160,9 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>170</y>
-      <width>471</width>
-      <height>31</height>
+      <y>280</y>
+      <width>221</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
@@ -140,8 +175,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>610</width>
-     <height>24</height>
+     <width>399</width>
+     <height>19</height>
     </rect>
    </property>
   </widget>

@@ -6,85 +6,179 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>338</width>
-    <height>269</height>
+    <width>397</width>
+    <height>427</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Добавить новый товар</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: #CF9292;</string>
+   <string notr="true">background: #5585B5;
+padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #1D2734;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0" colspan="2">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>Цена</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0" colspan="2">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>Ед. измерения</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Наименование</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
-     <widget class="QLineEdit" name="priceLine">
-      <property name="styleSheet">
-       <string notr="true">background: #C4C4C4;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Производитель</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="2">
-     <widget class="QLineEdit" name="measurmentLine">
-      <property name="styleSheet">
-       <string notr="true">background: #C4C4C4;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QLineEdit" name="nameLine">
-      <property name="styleSheet">
-       <string notr="true">background: #C4C4C4;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1" colspan="2">
-     <widget class="QPushButton" name="prodAddBtn">
-      <property name="styleSheet">
-       <string notr="true">background: #C4C4C4;</string>
-      </property>
-      <property name="text">
-       <string>Добавить</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QLineEdit" name="producerLine">
-      <property name="styleSheet">
-       <string notr="true">background: #C4C4C4;</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>130</y>
+      <width>33</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Цена</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>270</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ед. измерения</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Наименование</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="priceLine">
+    <property name="geometry">
+     <rect>
+      <x>135</x>
+      <y>120</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>204</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Производитель</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="measurmentLine">
+    <property name="geometry">
+     <rect>
+      <x>135</x>
+      <y>249</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="nameLine">
+    <property name="geometry">
+     <rect>
+      <x>135</x>
+      <y>56</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="prodAddBtn">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>340</y>
+      <width>261</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid;
+border-radius: 4px;
+box-sizing: border-box;
+cursor: pointer;
+outline: none;
+position: relative;
+transition: 0.3s;
+font-weight: 600;
+vertical-align: middle;
+background: #F27171;</string>
+    </property>
+    <property name="text">
+     <string>Добавить</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="producerLine">
+    <property name="geometry">
+     <rect>
+      <x>135</x>
+      <y>184</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

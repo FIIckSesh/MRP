@@ -6,54 +6,82 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>627</width>
-    <height>369</height>
+    <width>399</width>
+    <height>430</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: #CF9292;</string>
+   <string notr="true">background: #5585B5;
+padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #1D2734;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTextEdit" name="textSurname">
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>140</y>
-      <width>104</width>
+      <y>40</y>
+      <width>201</width>
       <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="textPatr">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>140</y>
-      <width>104</width>
+      <x>140</x>
+      <y>160</y>
+      <width>201</width>
       <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="addCourierButton">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>200</y>
+      <x>70</x>
+      <y>317</y>
       <width>261</width>
       <height>32</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">border: 2px solid;
+border-radius: 4px;
+box-sizing: border-box;
+cursor: pointer;
+outline: none;
+position: relative;
+transition: 0.3s;
+font-weight: 600;
+vertical-align: middle;
+background: #F27171;</string>
     </property>
     <property name="text">
      <string>Добавить курьера</string>
@@ -62,8 +90,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>120</y>
+      <x>40</x>
+      <y>50</y>
       <width>60</width>
       <height>16</height>
      </rect>
@@ -75,9 +103,9 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>292</x>
+      <x>50</x>
       <y>120</y>
-      <width>41</width>
+      <width>61</width>
       <height>16</height>
      </rect>
     </property>
@@ -88,9 +116,9 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>120</y>
-      <width>60</width>
+      <x>30</x>
+      <y>180</y>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
@@ -101,23 +129,30 @@
    <widget class="QTextEdit" name="textName">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>140</y>
-      <width>104</width>
+      <x>140</x>
+      <y>100</y>
+      <width>201</width>
       <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #C4C4C4;</string>
+     <string notr="true">width: 100%;
+    outline: none;
+    border: 1px solid #DCDEE1;
+    border-radius: 4px;
+    color: #1D2734;
+    padding-left: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;</string>
     </property>
    </widget>
    <widget class="QLabel" name="txtErr">
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>240</y>
-      <width>471</width>
-      <height>31</height>
+      <y>280</y>
+      <width>241</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
@@ -130,8 +165,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>627</width>
-     <height>24</height>
+     <width>399</width>
+     <height>19</height>
     </rect>
    </property>
   </widget>
